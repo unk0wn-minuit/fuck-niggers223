@@ -1,17 +1,32 @@
-<div id="gameBox">
-  <iframe id="gameFrame" src="https://blooket-cheats.github.io/"></iframe>
-</div>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blooket Bot Fullscreen</title>
 
-<button onclick="fullscreenGame()">Fullscreen</button>
-
-<script>
-function fullscreenGame(){
-  const box = document.getElementById("gameBox");
-
-  if(!document.fullscreenElement){
-    box.requestFullscreen();
-  }else{
-    document.exitFullscreen();
-  }
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
 }
-</script>
+
+iframe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border: none;
+}
+</style>
+</head>
+
+<body>
+
+<iframe src="https://blooket-bot.vercel.app/" allowfullscreen></iframe>
+
+</body>
+</html>
