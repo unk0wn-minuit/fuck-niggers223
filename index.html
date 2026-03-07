@@ -342,7 +342,13 @@
     const gameFrame = document.getElementById("gameFrame");
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-    const displayName = (f) => f.replace(/^cl/i, "");
+    const displayName = (f) => {
+  const raw = f.replace(/^cl/i, "").trim();
+  return raw.replace(/^([^A-Za-zÅÄÖåäö]*)([a-zåäö])/, (_, prefix, letter) => {
+    return prefix + letter.toUpperCase();
+  });
+};
+
 
     function getGroupLabel(file) {
       const name = displayName(file).trim();
