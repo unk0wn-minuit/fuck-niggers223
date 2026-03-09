@@ -587,35 +587,6 @@
       }
     }
   </style>
-<div id="adminLogin" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;z-index:9999;">
-  <div style="background:#111;padding:20px;border-radius:15px;width:300px;text-align:center;">
-    <h3>Admin Login</h3>
-    <input id="adminPassword" type="password" placeholder="Lösenord" style="width:100%;padding:8px;margin:10px 0;">
-    <button onclick="loginAdmin()">Logga in</button>
-  </div>
-</div>
-
-<div id="adminPanel" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;z-index:9999;">
-  <div style="background:#111;padding:20px;border-radius:15px;width:350px;text-align:center;">
-    <h3>Admin Panel</h3>
-
-    <input id="banUserInput" placeholder="Användare att banna" style="width:100%;margin-bottom:10px;">
-    <button onclick="adminBanUser()">Banna</button>
-
-    <br><br>
-
-    <input id="timeoutUserInput" placeholder="Användare timeout" style="width:100%;margin-bottom:10px;">
-    <button onclick="adminTimeoutUser()">Timeout 5 min</button>
-
-    <br><br>
-
-    <button onclick="adminClearChat()">Rensa chatten</button>
-
-    <br><br>
-
-    <button onclick="closeAdmin()">Stäng</button>
-  </div>
-</div>
 <body class="blue">
   <div class="app">
     <button id="menuToggle" class="menu-toggle" onclick="toggleSidebar()" aria-label="Öppna meny" aria-expanded="false">☰</button>
@@ -629,7 +600,6 @@
       <button class="sidebar-btn" onclick="openIframe('https://studio.pickaxe.co/STUDIOGX4LHRY55GYHQ15/295XP68K97')"><span class="icon">🤖</span><span class="label">AI</span></button>
       <button class="sidebar-btn" onclick="openIframe('https://pluggamattematik.cdpa.cc')"><span class="icon">🔎</span><span class="label">Browser</span></button>
       <button class="sidebar-btn" onclick="openIframe('https://docs.google.com/forms/d/e/1FAIpQLScUxR7Ychb0ivMguYI-3BHwb8D3ZH2x7n1vkpXuYjNeVlU3Cg/viewform?usp=header')"><span class="icon">📩</span><span class="label">Förslag</span></button>
-      <button class="sidebar-btn" onclick="openAdminLogin()"> <span class="icon">🛠</span> <span class="label">Admin</span></button>
       <button class="sidebar-btn" onclick="openThemePopup()"><span class="icon">🎨</span><span class="label">Tema</span></button>
     </div>
 
@@ -1134,45 +1104,6 @@ function sendChatMessage() {
         activePlayersEl.textContent = "Aktiva spelare: --";
         addSystemChatMessage("Kunde inte ansluta chatten.");
       }
-const ADMIN_PASSWORD = "1234"; // ändra detta
-
-let bannedUsers = {};
-let timeoutUsers = {};
-
-function openAdminLogin() {
-  document.getElementById("adminLogin").style.display = "flex";
-}
-
-function loginAdmin() {
-  const pass = document.getElementById("adminPassword").value;
-
-  if (pass === ADMIN_PASSWORD) {
-    document.getElementById("adminLogin").style.display = "none";
-    document.getElementById("adminPanel").style.display = "flex";
-  } else {
-    alert("Fel lösenord");
-  }
-}
-
-function closeAdmin() {
-  document.getElementById("adminPanel").style.display = "none";
-}
-
-function adminBanUser() {
-  const name = document.getElementById("banUserInput").value.toLowerCase();
-  bannedUsers[name] = true;
-  alert(name + " bannad");
-}
-
-function adminTimeoutUser() {
-  const name = document.getElementById("timeoutUserInput").value.toLowerCase();
-  timeoutUsers[name] = Date.now() + 5 * 60 * 1000;
-  alert(name + " timeoutad i 5 minuter");
-}
-
-function adminClearChat() {
-  if (chatRef) chatRef.remove();
-}
     })();
   </script>
 </body>
