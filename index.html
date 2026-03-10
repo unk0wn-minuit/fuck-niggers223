@@ -932,14 +932,7 @@ function containsBannedWord(text) {
       addChatMessage({ name: "System", text, ts: Date.now() });
     }
 
-function sendChatMessage() {
-  const text = sanitizeText(chatInputEl.value);
-  if (!text || !chatRef) return;
-
-  if (containsBannedWord(text)) {
-    alert("Ditt meddelande innehåller ord som inte är tillåtna.");
-    return;
-  }
+//SEND CHAT MESSAGE HÄR!!!!!!!!!!!!!!!!!!
 
   const name = sanitizeName(chatNameEl.value);
   chatNameEl.value = name;
