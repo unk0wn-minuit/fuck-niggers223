@@ -903,7 +903,10 @@ const bannedWords = [
   "penis",
   "nigga",
   "k4k",
-  "dih"
+  "dih",
+  "dräng",
+  "snippa",
+  "niger"
 ];
 
 function containsBannedWord(text) {
@@ -932,7 +935,15 @@ function containsBannedWord(text) {
       addChatMessage({ name: "System", text, ts: Date.now() });
     }
 
-//SEND CHAT MESSAGE HÄR!!!!!!!!!!!!!!!!!!
+function sendChatMessage() {
+  const text = sanitizeText(chatInputEl.value);
+  if (!text || !chatRef) return;
+
+  if (containsBannedWord(text)) {
+    alert("Ditt meddelande innehåller ord som inte är tillåtna.");
+    return;
+  }
+
 
   const name = sanitizeName(chatNameEl.value);
   chatNameEl.value = name;
