@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv"> X
+<html lang="sv">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -324,7 +324,8 @@ var GAMES=[{"f":"Dragonxclient.html","name":"Dragonxclient"},{"f":"Eaglercraft-A
 var GRADS=["linear-gradient(135deg,#7b2cff,#3a00b7)","linear-gradient(135deg,#ff2d55,#8b0000)","linear-gradient(135deg,#00c9ff,#007a8a)","linear-gradient(135deg,#f7971e,#ffd200)","linear-gradient(135deg,#56ab2f,#1a6b00)","linear-gradient(135deg,#f953c6,#b91d73)","linear-gradient(135deg,#4facfe,#00f2fe)","linear-gradient(135deg,#fa709a,#fee140)","linear-gradient(135deg,#a18cd1,#fbc2eb)","linear-gradient(135deg,#fda085,#f6d365)","linear-gradient(135deg,#84fab0,#8fd3f4)","linear-gradient(135deg,#a1c4fd,#c2e9fb)","linear-gradient(135deg,#fd7979,#fb923c)","linear-gradient(135deg,#667eea,#764ba2)","linear-gradient(135deg,#f093fb,#f5576c)","linear-gradient(135deg,#4481eb,#04befe)","linear-gradient(135deg,#0ba360,#3cba92)","linear-gradient(135deg,#ff9a9e,#fad0c4)","linear-gradient(135deg,#a18cd1,#fbc2eb)","linear-gradient(135deg,#fccb90,#d57eeb)","linear-gradient(135deg,#e0c3fc,#8ec5fc)","linear-gradient(135deg,#f77062,#fe5196)","linear-gradient(135deg,#c3cfe2,#c3cfe2)","linear-gradient(135deg,#89f7fe,#66a6ff)","linear-gradient(135deg,#fddb92,#d1fdff)","linear-gradient(135deg,#96fbc4,#f9f586)"];
 var ADMINPW="WkdsemNHeGhlV1pzWlhnPQ==";
 var state={coins:0,xp:0,level:1,favorites:[],gamesPlayed:0,filterCat:"alla",search:"",page:0,perPage:60,user:null,isAdmin:false,settings:{animations:true,sounds:false,darkMode:true,theme:"purple"}};
-function getGrad(name){var c=(name||"A").toUpperCase().charCodeAt(0)-65;return GRADS[((c%26)+26)%26]||GRADS[0];}
+function getGrad(name){var n=name.toLowerCase();if(n.includes('minecraft')||n.includes('eagler')||n.includes('mine')||n.includes('craft'))return 'linear-gradient(135deg,#56ab2f,#a8e063)';if(n.includes('slope')||n.includes('run')||n.includes('race')||n.includes('speed'))return 'linear-gradient(135deg,#f093fb,#f5576c)';if(n.includes('chess')||n.includes('puzzle')||n.includes('word'))return 'linear-gradient(135deg,#4facfe,#00f2fe)';if(n.includes('snake')||n.includes('pac')||n.includes('tetris'))return 'linear-gradient(135deg,#43e97b,#38f9d7)';if(n.includes('shoot')||n.includes('gun')||n.includes('war'))return 'linear-gradient(135deg,#f7971e,#ffd200)';if(n.includes('car')||n.includes('drift')||n.includes('drive'))return 'linear-gradient(135deg,#ffecd2,#fcb69f)';if(n.includes('io'))return 'linear-gradient(135deg,#30cfd0,#667eea)';var h=0;for(var i=0;i<n.length;i++)h=(h*31+n.charCodeAt(i))&0xffff;var g=['linear-gradient(135deg,#fd7979,#fb923c)','linear-gradient(135deg,#f953c6,#b91d73)','linear-gradient(135deg,#43e97b,#38f9d7)','linear-gradient(135deg,#4facfe,#00f2fe)','linear-gradient(135deg,#fa709a,#fee140)','linear-gradient(135deg,#30cfd0,#667eea)','linear-gradient(135deg,#a18cd1,#fbc2eb)','linear-gradient(135deg,#ffecd2,#fcb69f)'];return g[h%g.length];}
+function getGameIcon(name){var n=name.toLowerCase();if(n.includes('minecraft')||n.includes('eagler')||n.includes('mine')||n.includes('craft'))return '⛏️';if(n.includes('fortnite')||n.includes('battle')||n.includes('shoot')||n.includes('gun'))return '🔫';if(n.includes('slope')||n.includes('run')||n.includes('race'))return '🏃';if(n.includes('chess')||n.includes('puzzle')||n.includes('word'))return '🧩';if(n.includes('snake'))return '🐍';if(n.includes('pac'))return '👾';if(n.includes('tetris'))return '🟦';if(n.includes('car')||n.includes('drift')||n.includes('drive'))return '🚗';if(n.includes('basket')||n.includes('foot')||n.includes('soccer'))return '⚽';if(n.includes('zombie')||n.includes('horror'))return '🧟';if(n.includes('space')||n.includes('star')||n.includes('galaxy'))return '🚀';if(n.includes('cookie')||n.includes('clicker'))return '🍪';if(n.includes('io'))return '🎮';return '🕹️';}
 function saveState(){
   if(!state.user)return;
   localStorage.setItem("jspel_"+state.user,JSON.stringify({coins:state.coins,xp:state.xp,level:state.level,favorites:state.favorites,gamesPlayed:state.gamesPlayed||0,settings:state.settings}));
@@ -368,20 +369,8 @@ function unlockGame(idx){
   ul.push(idx);localStorage.setItem("unlocked_"+state.user,JSON.stringify(ul));
   saveState();updateHUD();toast("Spel upplåst!");renderGames();
 }
-function openGame(idx){
-  var g=GAMES[idx];if(!g)return;
-  state.gamesPlayed=(state.gamesPlayed||0)+1;
-  document.getElementById("gameTitle").textContent=g.name;
-  document.getElementById("gameFrame").src="UGS-Files/"+g.f;
-  document.getElementById("gameOverlay").classList.add("open");
-  addCoins(1,"Spelade "+g.name);
-  updateQuests("play");
-  saveState();
-}
-function closeGame(){
-  document.getElementById("gameOverlay").classList.remove("open");
-  document.getElementById("gameFrame").src="about:blank";
-}
+function openGame(i){var g=GAMES[i];if(!g)return;if(gameIsLocked(i)){toast('Lås upp spelet i butiken!','error');return;}document.getElementById('gameTitle').textContent=g.name;var fr=document.getElementById('gameFrame');if(fr)fr.src='UGS-Files/'+g.f;document.getElementById('gameOverlay').style.display='flex';addCoins(1);var recent=JSON.parse(localStorage.getItem('recentGames')||'[]');var today=new Date().toDateString();if(!recent.find(function(r){return r.f===g.f&&r.date===today;})){recent.unshift({f:g.f,name:g.name,date:today});if(recent.length>50)recent.pop();localStorage.setItem('recentGames',JSON.stringify(recent));state.gamesPlayed=(state.gamesPlayed||0)+1;}window._gameStartTime=Date.now();updateQuests();saveState();}
+function closeGame(){var fr=document.getElementById('gameFrame');if(fr)fr.src='about:blank';document.getElementById('gameOverlay').style.display='none';if(window._gameStartTime){var mins=Math.floor((Date.now()-window._gameStartTime)/60000);if(mins>0){var today=new Date().toDateString();var key='playtime_'+state.user+'_'+today;var old=parseInt(localStorage.getItem(key)||'0');localStorage.setItem(key,old+mins);updateQuests();}window._gameStartTime=null;}}
 function goFullscreen(){
   var fr=document.getElementById("gameFrame");
   if(fr.requestFullscreen)fr.requestFullscreen();
@@ -425,7 +414,7 @@ function renderGames(){
     var thumb=document.createElement("div");thumb.className="gameThumb";
     var bg=document.createElement("div");bg.className="gameThumbBg";bg.style.background=getGrad(game.name);
     var letter=document.createElement("div");letter.className="gameThumbLetter";
-    letter.textContent=(game.name||"?").trim().substring(0,2).toUpperCase();
+    letter.innerHTML='<span style="font-size:22px">'+getGameIcon(game.name)+'</span>';;
     thumb.appendChild(bg);thumb.appendChild(letter);
     var info=document.createElement("div");info.className="gameInfo";
     var nm=document.createElement("div");nm.className="gameName";nm.textContent=game.name;
@@ -501,52 +490,9 @@ function renderThemePanel(){
     card.classList.add("active");
   });
 }
-function renderQuestsPanel(){
-  var el=document.getElementById("panel_quests");
-  if(!state.user){el.innerHTML="<p style='color:var(--d);padding:14px;text-align:center'>Logga in för att se quests</p>";return;}
-  var quests=getQuests();
-  el.innerHTML="";
-  var sec=document.createElement("div");sec.className="sideSection";
-  var h=document.createElement("h4");h.textContent="Dagliga quests";sec.appendChild(h);
-  quests.forEach(function(q){
-    var pct=Math.min(100,Math.round(q.prog/q.goal*100));
-    var card=document.createElement("div");card.className="questCard";
-    var nm=document.createElement("div");nm.className="questName";nm.textContent=q.name;
-    var desc=document.createElement("div");desc.className="questDesc";desc.textContent=q.desc;
-    var bar=document.createElement("div");bar.className="questProg";
-    var fill=document.createElement("div");fill.className="questProgFill";fill.style.width=pct+"%";
-    bar.appendChild(fill);
-    var rew=document.createElement("div");
-    if(q.done){rew.className="questDone";rew.textContent="✓ Klar!";}else{rew.className="questReward";rew.textContent="🪙 "+q.reward+" mynt — "+q.prog+"/"+q.goal;}
-    card.appendChild(nm);card.appendChild(desc);card.appendChild(bar);card.appendChild(rew);
-    sec.appendChild(card);
-  });
-  el.appendChild(sec);
-}
-function getQuests(){
-  var key="quests_"+state.user+"_"+new Date().toDateString();
-  var q=JSON.parse(localStorage.getItem(key)||"null");
-  if(!q){q=[
-    {id:"play5",name:"Spela 5 spel",desc:"Öppna 5 spel idag",goal:5,prog:0,reward:20,done:false},
-    {id:"fav3",name:"Spara 3 favoriter",desc:"Lägg till 3 favoriter",goal:3,prog:0,reward:15,done:false},
-    {id:"play10",name:"Spela 10 spel",desc:"Öppna 10 spel idag",goal:10,prog:0,reward:50,done:false},
-    {id:"search1",name:"Sök ett spel",desc:"Använd sökfältet",goal:1,prog:0,reward:5,done:false}
-  ];localStorage.setItem(key,JSON.stringify(q));}
-  return q;
-}
-function updateQuests(type){
-  if(!state.user)return;
-  var key="quests_"+state.user+"_"+new Date().toDateString();
-  var q=getQuests();
-  q.forEach(function(quest){
-    if(quest.done)return;
-    if(type==="play"&&(quest.id==="play5"||quest.id==="play10"))quest.prog=Math.min(quest.goal,quest.prog+1);
-    if(type==="fav"&&quest.id==="fav3")quest.prog=Math.min(quest.goal,quest.prog+1);
-    if(type==="search"&&quest.id==="search1")quest.prog=Math.min(quest.goal,quest.prog+1);
-    if(quest.prog>=quest.goal&&!quest.done){quest.done=true;addCoins(quest.reward,"Quest klar: "+quest.name);}
-  });
-  localStorage.setItem(key,JSON.stringify(q));
-}
+function renderQuestsPanel(){var el=document.getElementById('panel_quests');if(!el)return;var quests=getQuests();el.innerHTML='<div style="padding:4px 0"><div style="font-size:11px;color:var(--d);margin-bottom:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">Dagliga quests</div>'+quests.map(function(q){var pct=Math.min(100,Math.round(q.prog/q.goal*100));var isT=q.id.startsWith('time');return'<div style="background:var(--glass);border:1px solid '+(q.claimed?'var(--p2)':q.done?'var(--p1)':'var(--line)')+';border-radius:12px;padding:12px;margin-bottom:8px"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px"><div><div style="font-size:13px;font-weight:700;color:'+(q.claimed?'var(--d)':q.done?'var(--p1)':'var(--w)')+'">'+ q.name+'</div><div style="font-size:11px;color:var(--d);margin-top:2px">'+q.desc+(isT?' ('+q.prog+'/'+q.goal+' min)':'')+ '</div></div><div style="text-align:right;flex-shrink:0;margin-left:8px"><div style="font-size:11px;color:var(--p1)">🪙 '+q.reward+'</div>'+(q.claimed?'<div style="font-size:10px;color:var(--d);margin-top:2px">✅ Hämtad</div>':q.done?'<button onclick="claimQuest(\\''+ q.id+'\\')" style="background:var(--p0);color:#fff;border:none;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:11px;font-weight:600;margin-top:4px">Hämta!</button>':'<div style="font-size:10px;color:var(--d);margin-top:2px">'+q.prog+'/'+q.goal+'</div>')+'</div></div><div style="background:rgba(255,255,255,.1);border-radius:4px;height:4px;overflow:hidden"><div style="background:'+(q.claimed||q.done?'var(--p1)':'linear-gradient(90deg,var(--p0),var(--p1))')+';height:100%;width:'+pct+'%;border-radius:4px;transition:width .3s"></div></div></div>';}).join('')+'</div>';}
+function getQuests(){var today=new Date().toDateString();var key='quests_'+state.user+'_'+today;var saved=JSON.parse(localStorage.getItem(key)||'null');var recent=JSON.parse(localStorage.getItem('recentGames')||'[]');var played=recent.filter(function(r){return r.date===today;}).length||state.gamesPlayed||0;var favCount=state.favorites.length;var playtime=parseInt(localStorage.getItem('playtime_'+state.user+'_'+today)||'0');var baseQuests=[{id:'play5',name:'Spela 5 spel',desc:'Öppna 5 spel idag',goal:5,prog:Math.min(played,5),reward:20},{id:'fav3',name:'Spara 3 favoriter',desc:'Lägg till 3 spel i favoriter',goal:3,prog:Math.min(favCount,3),reward:15},{id:'play10',name:'Spela 10 spel',desc:'Öppna 10 spel idag',goal:10,prog:Math.min(played,10),reward:50},{id:'time5',name:'Spela 5 minuter',desc:'Spela i 5 min idag',goal:5,prog:Math.min(playtime,5),reward:25},{id:'time15',name:'Spela 15 minuter',desc:'Spela i 15 min idag',goal:15,prog:Math.min(playtime,15),reward:60},{id:'fav5',name:'Spara 5 favoriter',desc:'Ha 5 favoriter',goal:5,prog:Math.min(favCount,5),reward:30}];var claimed=saved?saved.claimed||[]:[];return baseQuests.map(function(q){q.done=q.prog>=q.goal;q.claimed=claimed.indexOf(q.id)>=0;return q;});}
+function updateQuests(){if(document.getElementById('panel_quests')&&document.getElementById('panel_quests').innerHTML)renderQuestsPanel();}
 function renderShopPanel(){
   var el=document.getElementById("panel_butik");
   if(!state.user){el.innerHTML="<p style='color:var(--d);padding:14px;text-align:center'>Logga in för att använda butiken</p>";return;}
@@ -603,100 +549,8 @@ function renderSettingsPanel(){
     sec2.appendChild(lb);el.appendChild(sec2);
   }
 }
-function renderProfilePanel(){
-  var el=document.getElementById("panel_profil");
-  if(!state.user){el.innerHTML="<p style='color:var(--d);padding:14px;text-align:center'>Logga in för att se profilen</p>";return;}
-  var avatar=localStorage.getItem("avatar_"+state.user)||"";
-  el.innerHTML="";
-  var sec=document.createElement("div");sec.className="sideSection";
-  var pb=document.createElement("div");pb.className="profileBox";
-  var av=document.createElement("div");av.className="profileAvatar";
-  if(avatar){var img=document.createElement("img");img.src=avatar;img.onerror=function(){this.style.display="none";};av.appendChild(img);
-  }else{av.textContent=state.user.substring(0,1).toUpperCase();}
-  var avhov=document.createElement("div");avhov.className="profileAvatarHover";avhov.textContent="Byt bild";
-  av.appendChild(avhov);pb.appendChild(av);
-  var pn=document.createElement("div");pn.className="profileName";pn.textContent=state.user;
-  var ps=document.createElement("div");ps.className="profileSub";ps.textContent="Nivå "+state.level+(state.isAdmin?" • Admin":"");
-  var stats=document.createElement("div");stats.className="profileStats";
-  [{v:state.coins,l:"Mynt"},{v:state.favorites.length,l:"Favoriter"},{v:state.gamesPlayed||0,l:"Spel"}].forEach(function(s){
-    var box=document.createElement("div");box.className="statBox";
-    var v=document.createElement("div");v.className="statVal";v.textContent=s.v;
-    var l=document.createElement("div");l.className="statLbl";l.textContent=s.l;
-    box.appendChild(v);box.appendChild(l);stats.appendChild(box);
-  });
-  pb.appendChild(pn);pb.appendChild(ps);pb.appendChild(stats);
-  sec.appendChild(pb);
-  var sec2=document.createElement("div");sec2.className="sideSection";
-  var h2=document.createElement("h4");h2.textContent="Profil bild (URL)";sec2.appendChild(h2);
-  var inp=document.createElement("input");inp.type="text";inp.className="formInput";
-  inp.placeholder="https://exempel.com/bild.png";
-  inp.value=avatar||"";
-  var saveBtn=document.createElement("button");saveBtn.className="pill primary";saveBtn.style.cssText="width:100%;justify-content:center;margin-top:8px";
-  saveBtn.textContent="Spara bild";
-  saveBtn.addEventListener("click",function(){
-    var url=inp.value.trim();
-    if(url)localStorage.setItem("avatar_"+state.user,url);
-    else localStorage.removeItem("avatar_"+state.user);
-    toast("Profilbild sparad!");renderProfilePanel();
-    var ud=document.getElementById("userAvatarDisplay");
-    if(ud){if(url){var i2=document.createElement("img");i2.src=url;i2.style.cssText="width:100%;height:100%;object-fit:cover;border-radius:50%;";ud.innerHTML="";ud.appendChild(i2);}else{ud.textContent=state.user.substring(0,1).toUpperCase();}}
-  });
-  av.addEventListener("click",function(){inp.focus();inp.select();});
-  sec2.appendChild(inp);sec2.appendChild(saveBtn);
-  el.appendChild(sec);el.appendChild(sec2);
-}
-function renderAdminPanel(){
-  var el=document.getElementById("panel_admin");
-  if(!state.isAdmin){el.innerHTML="<p style='color:#ff6b6b;padding:14px;text-align:center'>🚫 Ingen åtkomst</p>";return;}
-  el.innerHTML="";
-  var title=document.createElement("div");title.className="sideSection";
-  var ht=document.createElement("h4");ht.textContent="🛡 Admin Panel";title.appendChild(ht);
-  el.appendChild(title);
-  var users=getAllUsers();
-  var sec=document.createElement("div");sec.className="adminCard";
-  var h=document.createElement("h4");h.textContent="Användare ("+users.length+")";sec.appendChild(h);
-  var list=document.createElement("div");list.className="adminList";
-  users.forEach(function(u){
-    var ud=JSON.parse(localStorage.getItem("jspel_"+u)||"{}");
-    var row=document.createElement("div");row.className="adminUserRow";
-    var nm=document.createElement("span");nm.className="adminUserName";nm.textContent=u;
-    var coins=document.createElement("span");coins.className="adminUserCoins";coins.textContent=(ud.coins||0)+" 🪙";
-    var ban=document.createElement("button");ban.className="pill danger";ban.style.cssText="font-size:10px;padding:4px 8px";
-    ban.textContent=localStorage.getItem("banned_"+u)?"Unban":"Ban";
-    ban.dataset.user=u;
-    ban.addEventListener("click",function(){
-      var usr=this.dataset.user;
-      if(localStorage.getItem("banned_"+usr)){localStorage.removeItem("banned_"+usr);this.textContent="Ban";toast(usr+" unbannad");}else{localStorage.setItem("banned_"+usr,"1");this.textContent="Unban";toast(usr+" bannad!");}
-    });
-    var giveBtn=document.createElement("button");giveBtn.className="pill ghost";giveBtn.style.cssText="font-size:10px;padding:4px 8px";
-    giveBtn.textContent="+50🪙";giveBtn.dataset.user=u;
-    giveBtn.addEventListener("click",function(){
-      var usr=this.dataset.user;var d=JSON.parse(localStorage.getItem("jspel_"+usr)||"{}");
-      d.coins=(d.coins||0)+50;localStorage.setItem("jspel_"+usr,JSON.stringify(d));
-      if(usr===state.user){state.coins+=50;updateHUD();saveState();}
-      toast("+50 mynt till "+usr);renderAdminPanel();
-    });
-    row.appendChild(nm);row.appendChild(coins);row.appendChild(giveBtn);row.appendChild(ban);
-    list.appendChild(row);
-  });
-  sec.appendChild(list);el.appendChild(sec);
-  var sec2=document.createElement("div");sec2.className="adminCard";
-  var h2=document.createElement("h4");h2.textContent="Globala åtgärder";sec2.appendChild(h2);
-  var clearChatBtn=document.createElement("button");clearChatBtn.className="pill danger";clearChatBtn.style.cssText="width:100%;justify-content:center;margin-bottom:6px";
-  clearChatBtn.textContent="Rensa global chatt";
-  clearChatBtn.addEventListener("click",function(){localStorage.removeItem("globalChat");toast("Chatt rensad!");});
-  var broadcastInp=document.createElement("input");broadcastInp.type="text";broadcastInp.className="formInput";broadcastInp.placeholder="Broadcast meddelande...";
-  broadcastInp.style.marginBottom="6px";
-  var broadcastBtn=document.createElement("button");broadcastBtn.className="pill primary";broadcastBtn.style.cssText="width:100%;justify-content:center";
-  broadcastBtn.textContent="Skicka broadcast";
-  broadcastBtn.addEventListener("click",function(){
-    var msg=broadcastInp.value.trim();if(!msg)return;
-    localStorage.setItem("broadcast",JSON.stringify({msg:msg,ts:Date.now()}));
-    toast("Broadcast skickat!");broadcastInp.value="";
-  });
-  sec2.appendChild(clearChatBtn);sec2.appendChild(broadcastInp);sec2.appendChild(broadcastBtn);
-  el.appendChild(sec2);
-}
+function renderProfilePanel(){var el=document.getElementById('panel_profil');if(!el)return;var av=localStorage.getItem('avatar_'+state.user)||'';var coins=state.coins,favs=state.favorites.length,played=(JSON.parse(localStorage.getItem('recentGames')||'[]')).length;el.innerHTML='<div style="text-align:center;padding:16px 0 8px"><div style="position:relative;display:inline-block;cursor:pointer" onclick="document.getElementById(\'picFileInput\').click()">'+(av?'<img src="'+av+'" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--p1)">':'<div style="width:72px;height:72px;border-radius:50%;background:var(--glass);border:3px solid var(--p1);display:flex;align-items:center;justify-content:center;font-size:28px">👤</div>')+'<div style="position:absolute;bottom:0;right:0;width:22px;height:22px;border-radius:50%;background:var(--p0);display:flex;align-items:center;justify-content:center;font-size:12px;border:2px solid var(--bg0)">📷</div></div><input type="file" id="picFileInput" accept="image/*" style="display:none" onchange="handleAvatarUpload(this)"><div style="font-weight:700;font-size:16px;margin-top:8px;color:var(--w)">'+state.user+'</div><div style="font-size:12px;color:var(--d)">Nivå '+state.level+'</div></div><div style="display:flex;gap:8px;margin:8px 0"><div class="statBox"><span>'+coins+'</span><small>Mynt</small></div><div class="statBox"><span>'+favs+'</span><small>Favoriter</small></div><div class="statBox"><span>'+played+'</span><small>Spel</small></div></div><p style="font-size:11px;color:var(--d);text-align:center;margin-top:4px">Klicka på bilden för att ladda upp</p>';}
+function renderAdminPanel(){var el=document.getElementById('panel_admin');if(!el)return;var users=getAllUsers();var totalMsgs=JSON.parse(localStorage.getItem('globalChat')||'[]').length;var bannedList=JSON.parse(localStorage.getItem('bannedUsers')||'[]');var announcements=JSON.parse(localStorage.getItem('admin_announcements')||'[]');el.innerHTML='<div style="padding:8px 0"><div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px"><div style="font-size:11px;color:var(--d);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">📊 Statistik</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:8px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--p1)">'+users.length+'</div><div style="font-size:10px;color:var(--d)">Användare</div></div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:8px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--p1)">'+totalMsgs+'</div><div style="font-size:10px;color:var(--d)">Chattmeddelanden</div></div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:8px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--p1)">'+bannedList.length+'</div><div style="font-size:10px;color:var(--d)">Bannade</div></div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:8px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--p1)">'+GAMES.length+'</div><div style="font-size:10px;color:var(--d)">Spel</div></div></div></div><div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px"><div style="font-size:11px;color:var(--d);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">📢 Broadcast</div><textarea id="adminBroadcastMsg" placeholder="Skriv ett meddelande..." style="width:100%;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:8px;padding:8px;color:var(--w);font-size:12px;font-family:inherit;resize:vertical;min-height:60px;box-sizing:border-box"></textarea><button onclick="adminBroadcast()" style="width:100%;margin-top:6px;background:var(--p0);color:#fff;border:none;border-radius:8px;padding:8px;cursor:pointer;font-size:12px;font-weight:600">📤 Skicka</button></div><div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px"><div style="font-size:11px;color:var(--d);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">📌 Tillkännagivanden</div><div style="display:flex;gap:6px;margin-bottom:8px"><input id="adminAnnounceInput" placeholder="Nytt tillkännagivande..." style="flex:1;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:8px;padding:7px;color:var(--w);font-size:12px"><button onclick="addAnnouncement()" style="background:var(--p0);color:#fff;border:none;border-radius:8px;padding:7px 10px;cursor:pointer;font-size:12px">+</button></div>'+(announcements.length?announcements.map(function(a,i){return'<div style="background:rgba(255,255,255,.05);border-radius:6px;padding:6px 8px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--m)"><span>'+a+'</span><button onclick="removeAnnouncement('+i+')" style="background:rgba(255,50,50,.2);color:#ff6b6b;border:none;border-radius:4px;padding:2px 6px;cursor:pointer;font-size:10px">✕</button></div>';}).join(''):'<div style="font-size:11px;color:var(--d);text-align:center;padding:8px">Inga tillkännagivanden</div>')+'</div><div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px"><div style="font-size:11px;color:var(--d);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">💰 Ge mynt</div><div style="display:flex;gap:6px;margin-bottom:6px"><input id="adminCoinUser" placeholder="Användarnamn" style="flex:1;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:8px;padding:7px;color:var(--w);font-size:12px"><input id="adminCoinAmount" type="number" placeholder="Antal" min="1" max="9999" style="width:70px;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:8px;padding:7px;color:var(--w);font-size:12px"></div><button onclick="adminGiveCoins()" style="width:100%;background:linear-gradient(135deg,#ffaa00,#ff6b00);color:#000;border:none;border-radius:8px;padding:8px;cursor:pointer;font-size:12px;font-weight:600">🪙 Ge mynt</button></div><div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px"><div style="font-size:11px;color:var(--d);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">👥 Användare ('+users.length+')</div><div style="max-height:200px;overflow-y:auto">'+users.map(function(u){var isBanned=bannedList.indexOf(u)>=0;var uData=JSON.parse(localStorage.getItem('jspel_'+u)||'{}');return'<div style="display:flex;align-items:center;gap:8px;padding:6px;border-radius:8px;background:rgba(255,255,255,.03);margin-bottom:4px"><div style="width:28px;height:28px;border-radius:50%;background:var(--p0);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;color:#fff">'+u.charAt(0).toUpperCase()+'</div><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600;color:var(--w);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+u+'</div><div style="font-size:10px;color:var(--d)">Mynt: '+(uData.coins||0)+' | Nivå: '+(uData.level||1)+'</div></div>'+(isBanned?'<button onclick="adminUnban(''+u+'')" style="background:rgba(0,200,100,.2);color:#00c864;border:none;border-radius:6px;padding:3px 7px;cursor:pointer;font-size:10px">Avbanna</button>':'<button onclick="adminKick(''+u+'')" style="background:rgba(255,150,0,.15);color:#ff9600;border:none;border-radius:6px;padding:3px 7px;cursor:pointer;font-size:10px;margin-right:4px">Kicka</button><button onclick="adminBan(''+u+'')" style="background:rgba(255,50,50,.15);color:#ff4040;border:none;border-radius:6px;padding:3px 7px;cursor:pointer;font-size:10px">Banna</button>')+'</div>';}).join('')+'</div></div><div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px"><div style="font-size:11px;color:var(--d);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">🗑️ Rensa chatt</div><button onclick="adminClearChat()" style="width:100%;background:rgba(255,50,50,.2);color:#ff6b6b;border:1px solid rgba(255,50,50,.3);border-radius:8px;padding:8px;cursor:pointer;font-size:12px;font-weight:600">🗑️ Rensa all chatt</button></div></div>';}
 function getAllUsers(){
   var users=[];
   for(var i=0;i<localStorage.length;i++){var k=localStorage.key(i);if(k&&k.startsWith("acc_"))users.push(k.substring(4));}
@@ -770,18 +624,7 @@ function doLogout(){
 }
 function openChat(){document.getElementById("chatOverlay").classList.add("open");closeSidebar();loadChatMsgs();}
 function closeChat(){document.getElementById("chatOverlay").classList.remove("open");}
-function loadChatMsgs(){
-  var msgs=JSON.parse(localStorage.getItem("globalChat")||"[]");
-  var el=document.getElementById("chatMessages");
-  el.innerHTML="";
-  msgs.slice(-60).forEach(function(m){
-    var d=document.createElement("div");d.className="chatMsg "+(m.user===state.user?"own":"other");
-    var u=document.createElement("div");u.className="chatUser";u.textContent=m.user+(m.admin?" 🛡":"");
-    var t=document.createElement("div");t.textContent=m.text;
-    d.appendChild(u);d.appendChild(t);el.appendChild(d);
-  });
-  el.scrollTop=el.scrollHeight;
-}
+function loadChatMsgs(){var msgs=JSON.parse(localStorage.getItem('globalChat')||'[]');var el=document.getElementById('chatMessages');if(!el)return;el.innerHTML=msgs.map(function(m){var isMe=m.user===state.user;var av=localStorage.getItem('avatar_'+m.user)||'';var avatarHtml=av?'<img src="'+av+'" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--p1)">':'<div style="width:28px;height:28px;border-radius:50%;background:var(--p0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;color:#fff">'+m.user.charAt(0).toUpperCase()+'</div>';var time=m.ts?new Date(m.ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'';var isAdmin=m.isAdmin||m.user==='[ADMIN]';return'<div style="display:flex;align-items:flex-end;gap:6px;margin:6px 0;'+(isMe?'flex-direction:row-reverse':'')+'">'+ avatarHtml+'<div style="max-width:70%">'+(isMe||isAdmin?'':'<div style="font-size:10px;color:var(--d);margin-bottom:2px;padding-left:4px">'+m.user+'</div>')+'<div style="background:'+(isAdmin?'rgba(255,80,0,.25)':isMe?'var(--p0)':'var(--glass2)')+';color:var(--w);padding:7px 11px;border-radius:'+(isMe?'14px 14px 4px 14px':'14px 14px 14px 4px')+';font-size:13px;word-break:break-word">'+m.text+'</div><div style="font-size:10px;color:var(--d);margin-top:2px;text-align:'+(isMe?'right':'left')+'">'+time+'</div></div></div>';}).join('');el.scrollTop=el.scrollHeight;}
 function sendChat(){
   if(!state.user){toast("Logga in för att chatta");return;}
   var inp=document.getElementById("chatInput");
@@ -805,13 +648,18 @@ function submitSuggestion(){
   toast("Förslag skickat! Tack");
   if(state.user)addCoins(5,"Skickade förslag");
 }
-function applyTheme(name){
-  var themes={purple:{"--p0":"#7b2cff","--p1":"#b56cff","--p2":"#3a00b7","--bg0":"#050008","--bg1":"#0b0014","--bg2":"#120022"},neon:{"--p0":"#00ffcc","--p1":"#00e5ff","--p2":"#007a5e","--bg0":"#000a08","--bg1":"#00150f","--bg2":"#001a10"},gold:{"--p0":"#ffaa00","--p1":"#ffd166","--p2":"#a06800","--bg0":"#0a0600","--bg1":"#130900","--bg2":"#1a0d00"},red:{"--p0":"#ff2d55","--p1":"#ff6b6b","--p2":"#8b0000","--bg0":"#080003","--bg1":"#100008","--bg2":"#160005"},blue:{"--p0":"#0ea5e9","--p1":"#7dd3fc","--p2":"#1e40af","--bg0":"#000510","--bg1":"#000d1f","--bg2":"#001030"},pink:{"--p0":"#ec4899","--p1":"#f9a8d4","--p2":"#9d174d","--bg0":"#08000a","--bg1":"#0f0012","--bg2":"#150018"}};
-  var t=themes[name]||themes.purple;
-  var r=document.documentElement;
-  Object.keys(t).forEach(function(k){r.style.setProperty(k,t[k]);});
-  if(state.user){state.settings.theme=name;saveState();}
-}
+
+function adminBroadcast(){var msg=document.getElementById('adminBroadcastMsg');if(!msg||!msg.value.trim())return toast('Skriv ett meddelande','error');var msgs=JSON.parse(localStorage.getItem('globalChat')||'[]');msgs.push({user:'[ADMIN]',text:'📢 '+msg.value.trim(),ts:Date.now(),isAdmin:true});localStorage.setItem('globalChat',JSON.stringify(msgs));msg.value='';toast('Broadcast skickat!','ok');if(document.getElementById('chatMessages'))loadChatMsgs();}
+function adminGiveCoins(){var uEl=document.getElementById('adminCoinUser');var aEl=document.getElementById('adminCoinAmount');if(!uEl||!aEl||!uEl.value.trim())return toast('Ange ett användarnamn','error');var amount=parseInt(aEl.value)||0;if(amount<=0)return toast('Ange ett giltigt antal mynt','error');if(uEl.value.trim()===state.user){state.coins+=amount;saveState();updateHUD();}else{var key='jspel_'+uEl.value.trim();var data=JSON.parse(localStorage.getItem(key)||'{}');data.coins=(data.coins||0)+amount;localStorage.setItem(key,JSON.stringify(data));}toast(amount+' mynt gavs till '+uEl.value.trim(),'ok');uEl.value='';aEl.value='';renderAdminPanel();}
+function adminKick(u){if(u===state.user)return toast('Kan inte kicka dig själv','error');toast(u+' kickades','ok');}
+function adminBan(u){if(u===state.user)return toast('Kan inte banna dig själv','error');var banned=JSON.parse(localStorage.getItem('bannedUsers')||'[]');if(banned.indexOf(u)<0){banned.push(u);localStorage.setItem('bannedUsers',JSON.stringify(banned));}toast(u+' bannades','ok');renderAdminPanel();}
+function adminUnban(u){var banned=JSON.parse(localStorage.getItem('bannedUsers')||'[]');var idx=banned.indexOf(u);if(idx>=0){banned.splice(idx,1);localStorage.setItem('bannedUsers',JSON.stringify(banned));}toast(u+' avbannades','ok');renderAdminPanel();}
+function adminClearChat(){if(!confirm('Rensa all chatt?'))return;localStorage.setItem('globalChat','[]');toast('Chatten rensades','ok');renderAdminPanel();if(document.getElementById('chatMessages'))loadChatMsgs();}
+function addAnnouncement(){var inp=document.getElementById('adminAnnounceInput');if(!inp||!inp.value.trim())return toast('Skriv ett tillkännagivande','error');var ann=JSON.parse(localStorage.getItem('admin_announcements')||'[]');ann.unshift(inp.value.trim());if(ann.length>10)ann.pop();localStorage.setItem('admin_announcements',JSON.stringify(ann));inp.value='';toast('Tillagt','ok');renderAdminPanel();}
+function removeAnnouncement(i){var ann=JSON.parse(localStorage.getItem('admin_announcements')||'[]');ann.splice(i,1);localStorage.setItem('admin_announcements',JSON.stringify(ann));toast('Borttaget','ok');renderAdminPanel();}
+function handleAvatarUpload(input){if(!input.files||!input.files[0])return;var file=input.files[0];if(!file.type.startsWith('image/')){toast('Bara bildfiler är tillåtna','error');return;}if(file.size>2097152){toast('Bilden är för stor (max 2MB)','error');return;}var reader=new FileReader();reader.onload=function(e){var b64=e.target.result;localStorage.setItem('avatar_'+state.user,b64);var ud=document.getElementById('userAvatarDisplay');if(ud)ud.src=b64;toast('Profilbild uppdaterad!','ok');renderProfilePanel();};reader.readAsDataURL(file);}
+function claimQuest(id){var today=new Date().toDateString();var key='quests_'+state.user+'_'+today;var saved=JSON.parse(localStorage.getItem(key)||'{"claimed":[]}');if(!saved.claimed)saved.claimed=[];if(saved.claimed.indexOf(id)>=0)return toast('Quest redan hämtad!','error');var quests=getQuests();var q=quests.find(function(q){return q.id===id;});if(!q||!q.done)return toast('Quest ej klar!','error');saved.claimed.push(id);localStorage.setItem(key,JSON.stringify(saved));addCoins(q.reward);toast('+'+q.reward+' mynt! Quest klar!','ok');renderQuestsPanel();}
+function applyTheme(name){var themes={purple:{"--p0":"#7b2cff","--p1":"#b56cff","--p2":"#3a00b7","--bg0":"#050008","--bg1":"#0b0014","--bg2":"#120022"},neon:{"--p0":"#00ffcc","--p1":"#00e5ff","--p2":"#007a5e","--bg0":"#000a08","--bg1":"#00150f","--bg2":"#001a10"},gold:{"--p0":"#ffaa00","--p1":"#ffd166","--p2":"#a06800","--bg0":"#0a0600","--bg1":"#130900","--bg2":"#1a0d00"},red:{"--p0":"#ff2d55","--p1":"#ff6b6b","--p2":"#8b0000","--bg0":"#080003","--bg1":"#100008","--bg2":"#160005"},blue:{"--p0":"#2979ff","--p1":"#82b1ff","--p2":"#0040ca","--bg0":"#000510","--bg1":"#000a1f","--bg2":"#000e2b"},pink:{"--p0":"#e91e8c","--p1":"#ff80c8","--p2":"#9c006a","--bg0":"#08000a","--bg1":"#120010","--bg2":"#180015"}};var t=themes[name]||themes.purple;var r=document.documentElement;Object.keys(t).forEach(function(k){r.style.setProperty(k,t[k]);});var p0=t['--p0'];document.querySelectorAll('[class*="bg-orb"]').forEach(function(el,i){if(i===0)el.style.background='radial-gradient(circle,'+p0+'44,transparent 70%)';else if(i===1)el.style.background='radial-gradient(circle,'+p0+'33,transparent 70%)';else el.style.background='radial-gradient(circle,'+p0+'22,transparent 70%)';});document.querySelectorAll('.bg-grid').forEach(function(el){el.style.backgroundImage='linear-gradient('+p0+'18 1px,transparent 1px),linear-gradient(90deg,'+p0+'18 1px,transparent 1px)';});state.settings.theme=name;localStorage.setItem('jspel_'+state.user,JSON.stringify({coins:state.coins,xp:state.xp,level:state.level,favorites:state.favorites,gamesPlayed:state.gamesPlayed,settings:state.settings}));}
 document.addEventListener("DOMContentLoaded",function(){
   document.querySelectorAll(".filterBtn").forEach(function(btn){
     btn.addEventListener("click",function(){
