@@ -897,7 +897,7 @@ function renderRecommendedSection(){
     {f:"EaglercraftZ_1.11.2.html",name:"Eaglercraft 1.11.2",emoji:"⛰️",desc:"Minecraft i webbläsaren — nyaste versionen",color:"#3ba55c"},
     {f:"clsummerRider3D.html",name:"Summer Rider 3D",emoji:"🏍️",desc:"Motorcykelracing i 3D",color:"#faa61a"},
   ];
-  var h='<div style="display:flex;gap:12px;overflow-x:auto;padding:4px 0 8px;scrollbar-width:thin">';
+  var h='<div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;padding:4px 0 8px">';
   featured.forEach(function(g){
     var locked=false;
     try{var idx=GAMES.findIndex(function(x){return x.f===g.f;});if(idx>=0)locked=gameIsLocked(idx);}catch(e){}
@@ -1929,6 +1929,7 @@ function finishLogin(){
   if(state.isAdmin){var adminNav=document.getElementById("adminNav");if(adminNav)adminNav.style.display="flex";}
   updateHUD();
   renderGames();
+  renderRecommendedSection();
   saveState();
   var broadcast=JSON.parse(localStorage.getItem("broadcast")||"null");
   if(broadcast&&broadcast.msg){setTimeout(function(){toast("📢 "+broadcast.msg,5000);},500);}
