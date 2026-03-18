@@ -178,7 +178,16 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
 .favBtn.active{background:rgba(123,44,255,.2);border-color:var(--p1);color:#ffd700;}
 .loadMoreBtn{display:block;margin:0 auto 40px;padding:13px 36px;border-radius:40px;background:linear-gradient(135deg,var(--p0),var(--p2));color:#fff;border:none;font-size:14px;font-weight:700;cursor:pointer;box-shadow:var(--shadow2);transition:all .2s;}
 .loadMoreBtn:hover{opacity:.9;transform:translateY(-2px);}
-.gameOverlay{position:fixed;inset:0;background:var(--bg0);z-index:900;display:none;flex-direction:column;}.gameOverlay.open{display:flex;}.gameBar{display:flex;align-items:center;gap:10px;padding:0 16px;height:56px;background:var(--glass);border-bottom:2px solid var(--p0);flex-shrink:0;backdrop-filter:blur(16px);}.gameBarLeft{display:flex;align-items:center;gap:8px;flex:1;min-width:0;}.gameBarCenter{position:absolute;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;}.gameBarTitle{font-size:22px;font-weight:900;color:var(--w);letter-spacing:-.02em;background:linear-gradient(135deg,var(--w),var(--p1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap;}.gameBarRight{display:flex;align-items:center;gap:8px;flex:1;justify-content:flex-end;}.gameBarBtn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:30px;border:1px solid var(--line);background:var(--glass);color:var(--m);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;backdrop-filter:blur(10px);}.gameBarBtn:hover{background:rgba(123,44,255,.2);border-color:var(--p0);color:var(--w);}.gameBarBtn.primary{background:linear-gradient(135deg,var(--p0),var(--p2));color:#fff;border-color:transparent;}.gameBarBtn.primary:hover{opacity:.9;}.gameMain{flex:1;display:flex;position:relative;overflow:hidden;}.gameQuestWidget{position:absolute;top:12px;right:12px;width:240px;z-index:10;background:var(--bg1);border:1px solid var(--line);border-radius:14px;padding:12px 14px;backdrop-filter:blur(12px);box-shadow:0 4px 24px rgba(0,0,0,.5);transition:opacity .2s;pointer-events:none;}.gameQuestWidget.hidden{opacity:0;}.gameQuestWidgetTitle{font-size:11px;font-weight:800;color:var(--p1);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}.gameQuestWidgetName{font-size:13px;font-weight:700;color:var(--w);margin-bottom:4px;}.gameQuestWidgetProg{font-size:11px;color:var(--d);margin-bottom:6px;}.gameQuestWidgetBar{height:4px;background:var(--line);border-radius:2px;overflow:hidden;}.gameQuestWidgetFill{height:100%;background:linear-gradient(90deg,var(--p0),var(--p1));border-radius:2px;transition:width .5s;}@media(max-width:600px){.gameQuestWidget{width:160px;top:8px;right:8px;padding:8px 10px;}}
+.gameOverlay{position:fixed;inset:0;background:var(--bg0);z-index:900;display:none;flex-direction:column;}.gameOverlay.open{display:flex;}.gameBar{display:flex;align-items:center;gap:10px;padding:0 16px;height:56px;background:var(--glass);border-bottom:2px solid var(--p0);flex-shrink:0;backdrop-filter:blur(16px);}.gameBarLeft{display:flex;align-items:center;gap:8px;flex:1;min-width:0;}.gameBarCenter{position:absolute;left:50%;transform:translateX(-50%);text-align:center;pointer-events:none;}.gameBarTitle{font-size:22px;font-weight:900;color:var(--w);letter-spacing:-.02em;background:linear-gradient(135deg,var(--w),var(--p1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;white-space:nowrap;}.gameBarRight{display:flex;align-items:center;gap:8px;flex:1;justify-content:flex-end;}.gameBarBtn{display:inline-flex;align-items:center;gap:5px;padding:7px 14px;border-radius:30px;border:1px solid var(--line);background:var(--glass);color:var(--m);font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap;backdrop-filter:blur(10px);}.gameBarBtn:hover{background:rgba(123,44,255,.2);border-color:var(--p0);color:var(--w);}.gameBarBtn.primary{background:linear-gradient(135deg,var(--p0),var(--p2));color:#fff;border-color:transparent;}.gameBarBtn.primary:hover{opacity:.9;}.gameMain{flex:1;display:flex;position:relative;overflow:hidden;}.gameQuestWidget{position:absolute;top:12px;right:12px;width:240px;z-index:10;background:var(--bg1);border:1px solid var(--line);border-radius:14px;padding:12px 14px;backdrop-filter:blur(12px);box-shadow:0 4px 24px rgba(0,0,0,.5);transition:opacity .2s;pointer-events:none;}.gameQuestWidget.hidden{opacity:0;}.gameQuestWidgetTitle{font-size:11px;font-weight:800;color:var(--p1);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}.gameQuestWidgetName{font-size:13px;font-weight:700;color:var(--w);margin-bottom:4px;}.gameQuestWidgetProg{font-size:11px;color:var(--d);margin-bottom:6px;}.gameQuestWidgetBar{height:4px;background:var(--line);border-radius:2px;overflow:hidden;}.gameQuestWidgetFill{height:100%;background:linear-gradient(90deg,var(--p0),var(--p1));border-radius:2px;transition:width .5s;}
+.pc-status{font-size:12px;color:var(--d);display:flex;align-items:center;gap:5px;margin:2px 0 4px;}
+.pc-status-dot{width:8px;height:8px;border-radius:50%;background:#3ba55c;flex-shrink:0;box-shadow:0 0 6px #3ba55c;}
+.pc-bio{font-size:12px;color:var(--m);background:rgba(255,255,255,.04);border-radius:8px;padding:8px 10px;margin:6px 0;border-left:2px solid var(--p0);line-height:1.5;}
+.pc-showcase-title{font-size:10px;color:var(--d);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px;}
+.pc-showcase{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px;}
+.pc-showcase-item{background:rgba(123,44,255,.12);border:1px solid var(--line);border-radius:10px;padding:6px 10px;font-size:11px;text-align:center;color:var(--m);}
+.pc-pins{display:flex;flex-direction:column;gap:4px;margin-bottom:4px;}
+.pc-pin-item{background:rgba(123,44,255,.08);border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:12px;color:var(--m);cursor:pointer;transition:background .2s;}
+.pc-pin-item:hover{background:rgba(123,44,255,.2);}@media(max-width:600px){.gameQuestWidget{width:160px;top:8px;right:8px;padding:8px 10px;}}
 
 .gameFrame{flex:1;border:none;width:100%;height:100%;}
 /* ---- INLINE GAME PANEL ---- */
@@ -418,6 +427,11 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
   </div>
 </header>
 
+<div id="siteAnnouncementBanner" style="display:none;position:fixed;top:64px;left:0;right:0;z-index:498;background:linear-gradient(90deg,var(--p2),var(--p0));padding:9px 50px 9px 20px;text-align:center;font-size:13px;font-weight:600;color:#fff;box-shadow:0 2px 12px rgba(123,44,255,.4)">
+  <span id="siteAnnouncementText"></span>
+  <button onclick="dismissSiteAnnouncement()" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.2);border:none;color:#fff;width:24px;height:24px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center">✕</button>
+</div>
+
 <div class="sideOverlay" id="sideOverlay" onclick="closeSidebar()"></div>
 
 <div class="sidebar" id="sidebar">
@@ -430,7 +444,10 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
     <button class="sideNavBtn" data-tab="quests" onclick="switchSideTab('quests')"><span class="sideNavIcon">📋</span><span class="sideNavLabel">Quests</span></button>
     <button class="sideNavBtn" data-tab="butik" onclick="openPanelOverlay('butik')"><span class="sideNavIcon">🛒</span><span class="sideNavLabel">Mynt-butik</span></button>
     <button class="sideNavBtn" data-tab="instaellningar" onclick="switchSideTab('instaellningar')"><span class="sideNavIcon">⚙️</span><span class="sideNavLabel" data-i18n="nav_settings">Settings</span></button>
+    <button class="sideNavBtn" onclick="openSoundboardWindow()"><span class="sideNavIcon">🎵</span><span class="sideNavLabel">Soundboard</span></button>
     <button class="sideNavBtn" onclick="closeSidebar();openChat()"><span class="sideNavIcon">💬</span><span class="sideNavLabel" data-i18n="nav_chat">Chat</span></button>
+    <button class="sideNavBtn" onclick="switchSideTab('leaderboard')"><span class="sideNavIcon">🏆</span><span class="sideNavLabel">Leaderboard</span></button>
+    <button class="sideNavBtn" onclick="switchSideTab('achievements')"><span class="sideNavIcon">🏅</span><span class="sideNavLabel">Achievements</span></button>
     <button class="sideNavBtn" data-tab="discord" onclick="openDiscord()"><span class="sideNavIcon">🟣</span><span class="sideNavLabel">Discord</span></button>
     <button class="sideNavBtn" onclick="openBrowser('browser')"><span class="sideNavIcon">🌐</span><span class="sideNavLabel">Browser</span></button>
     <button class="sideNavBtn" onclick="openBrowser('ai')"><span class="sideNavIcon">🤖</span><span class="sideNavLabel">Jakob AI</span></button>
@@ -457,6 +474,8 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
     <div class="sidePanel" id="panel_updates"></div>
     <div class="sidePanel" id="panel_instaellningar"></div>
     <div class="sidePanel" id="panel_admin"></div>
+    <div class="sidePanel" id="panel_leaderboard"></div>
+    <div class="sidePanel" id="panel_achievements"></div>
       <div class="sidePanel" id="panel_discord">
         <iframe src="https://mescord.jakobb.se" allow="microphone; camera" loading="lazy"></iframe>
       </div>
@@ -514,15 +533,38 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
         <div class="gameQuestWidgetBar"><div class="gameQuestWidgetFill" id="gqwFill" style="width:0%"></div></div>
       </div>
       <div id="gameSubInfo" style="font-size:11px;color:var(--d);text-align:center;margin-top:4px"></div>
+      <div id="igpRating" style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-top:4px">
+        <div style="font-size:10px;color:var(--d);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">⭐ Betygsätt</div>
+        <div id="igpRatingStars" style="display:flex;align-items:center;gap:2px"></div>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="chatOverlay" id="chatOverlay" onclick="if(event.target===this)closeChat()">
-  <div class="chatBox">
-    <div class="chatHead"><h3 data-i18n="chatTitle">💬 Chat</h3><button class="closeBtn" onclick="closeChat()">✕</button></div>
-    <div class="chatMessages" id="chatMessages"></div>
-    <div class="chatInputRow">
+<div class="appOverlay" id="soundboardOverlay" onclick="if(event.target===this)closeSoundboardWindow()">
+  <div class="appWin" id="soundboardWin" style="width:min(820px,95vw);height:min(620px,92vh)">
+    <div class="winBar" id="soundboardWinBar">
+      <div class="winBar-title"><span class="winBar-icon">🎵</span> Soundboard</div>
+      <div class="winBar-controls">
+        <button class="winBtn wClose" onclick="closeSoundboardWindow()">✕</button>
+      </div>
+    </div>
+    <div class="appBody" style="padding:0">
+      <iframe id="soundboardFrame" src="" style="width:100%;height:100%;border:none;display:block" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="appOverlay" id="chatOverlay" onclick="if(event.target===this)closeChat()">
+  <div class="appWin" id="chatWin" style="width:min(440px,95vw);height:min(540px,88vh);display:flex;flex-direction:column">
+    <div class="winBar" id="chatWinBar">
+      <div class="winBar-title"><span class="winBar-icon">💬</span> <span data-i18n="chatTitle">Chat</span></div>
+      <div class="winBar-controls">
+        <button class="winBtn wClose" onclick="closeChat()">✕</button>
+      </div>
+    </div>
+    <div style="flex:1;overflow-y:auto;min-height:0" class="chatMessages" id="chatMessages"></div>
+    <div class="chatInputRow" style="flex-shrink:0;padding:8px;border-top:1px solid var(--line)">
       <input type="text" id="chatInput" data-i18n-ph="chatPlaceholder" placeholder="Write a message..." onkeydown="chatKey(event)" maxlength="250">
       <button class="pill primary" onclick="sendChat()" style="padding:8px 14px;flex-shrink:0" data-i18n="sendBtn">Send</button>
     </div>
@@ -974,11 +1016,54 @@ function updateHUD(){
   document.getElementById("levelDisplay").textContent="Nivå "+lvl;
   document.getElementById("xpFill").style.width=(state.xp%100)+"%";
 }
+var ACHIEVEMENTS=[
+  {id:'first_game',name:'Första spelet',desc:'Spela ditt första spel',icon:'🎮',check:function(){return(state.gamesPlayed||0)>=1;}},
+  {id:'games_10',name:'10 spel',desc:'Spela 10 spel',icon:'🕹️',check:function(){return(state.gamesPlayed||0)>=10;}},
+  {id:'games_100',name:'Spelentusiast',desc:'Spela 100 spel',icon:'🏅',check:function(){return(state.gamesPlayed||0)>=100;}},
+  {id:'coins_100',name:'Rik',desc:'Samla 100 mynt',icon:'💰',check:function(){return state.coins>=100;}},
+  {id:'coins_1000',name:'Rikaste',desc:'Samla 1000 mynt',icon:'🤑',check:function(){return state.coins>=1000;}},
+  {id:'favs_5',name:'Samlare',desc:'Ha 5 favoriter',icon:'⭐',check:function(){return state.favorites.length>=5;}},
+  {id:'level_5',name:'Nivå 5',desc:'Nå nivå 5',icon:'🌟',check:function(){return state.level>=5;}},
+  {id:'level_10',name:'Veteran',desc:'Nå nivå 10',icon:'💎',check:function(){return state.level>=10;}},
+  {id:'streak_7',name:'En vecka',desc:'7 dagars inloggningsstreak',icon:'🔥',check:function(){var d=JSON.parse(localStorage.getItem('daily_streak_'+(state.user||''))||'{"streak":0}');return(d.streak||0)>=7;}},
+];
+function checkAchievements(){
+  if(!state.user)return;
+  var earned=JSON.parse(localStorage.getItem('achievements_'+state.user)||'[]');
+  var newOnes=[];
+  ACHIEVEMENTS.forEach(function(a){
+    if(earned.indexOf(a.id)<0&&a.check()){
+      earned.push(a.id);newOnes.push(a);
+    }
+  });
+  if(newOnes.length){
+    localStorage.setItem('achievements_'+state.user,JSON.stringify(earned));
+    newOnes.forEach(function(a,i){
+      setTimeout(function(){toast(a.icon+' Achievement unlocked: '+a.name,'ok');},i*1200);
+    });
+  }
+}
+function renderAchievementsPanel(el){
+  if(!el)return;
+  var earned=JSON.parse(localStorage.getItem('achievements_'+(state.user||'')||'[]'));
+  var html='<div class="sideSection"><h4>🏅 Achievements ('+earned.length+'/'+ACHIEVEMENTS.length+')</h4>';
+  ACHIEVEMENTS.forEach(function(a){
+    var done=earned.indexOf(a.id)>=0;
+    html+='<div style="display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid var(--line);margin-bottom:5px;opacity:'+(done?'1':'.45')+'">';
+    html+='<span style="font-size:22px">'+a.icon+'</span>';
+    html+='<div><div style="font-size:13px;font-weight:700;color:var(--w)">'+a.name+'</div><div style="font-size:11px;color:var(--d)">'+a.desc+'</div></div>';
+    if(done)html+='<span style="margin-left:auto;color:#3ba55c;font-size:16px">✓</span>';
+    html+='</div>';
+  });
+  html+='</div>';
+  el.innerHTML=html;
+}
 function addCoins(n,reason){
   if(!state.user)return;
   state.coins+=n;state.xp+=Math.floor(n/2);
   saveState();updateHUD();
   toast("+"+n+" mynt — "+reason);
+  checkAchievements();
 }
 function gameIsLocked(idx){return false;}
 function unlockGame(idx){
@@ -988,7 +1073,37 @@ function unlockGame(idx){
   ul.push(idx);localStorage.setItem("unlocked_"+state.user,JSON.stringify(ul));
   saveState();updateHUD();toast("Spel upplåst!");renderGames();
 }
-function openGame(i){var g=GAMES[i];if(!g)return;if(gameIsLocked(i)){toast('Lås upp spelet i butiken!','error');return;}var gName=g.name.replace(/^cl/i,'').trim();_currentGameIdx=i;var fb=document.getElementById('gameFavBtn');if(fb)fb.textContent=(state.favorites.indexOf(i)>=0)?'★':'☆';var si=document.getElementById('gameSubInfo');if(si)si.textContent=(g.cat||'');var gt=document.getElementById('gameTitle');if(gt)gt.textContent=gName;/* Hide grid, filterbar, search, hero */var filterBar=document.querySelector('.filterBar');var searchWrap=document.querySelector('.searchWrap');var gGrid=document.getElementById('gamesGrid');var lmw=document.getElementById('loadMoreWrap');var hero=document.querySelector('.hero');if(filterBar)filterBar.style.display='none';if(searchWrap)searchWrap.style.display='none';if(gGrid)gGrid.style.display='none';if(lmw)lmw.style.display='none';if(hero)hero.style.display='none';var panel=document.getElementById('inlineGamePanel');if(panel)panel.style.display='flex';/* Scroll to top so igp-bar is visible */window.scrollTo({top:0,behavior:'smooth'});/* Reload btn */var rb=document.getElementById('igpReloadBtn');if(rb)rb.onclick=function(){var f=document.getElementById('gameFrame');if(f)f.src=f.src;};/* Show inline loader */var ldr=document.getElementById('igpLoader');if(ldr)ldr.style.display='flex';var fr=document.getElementById('gameFrame');if(fr){fr.onload=function(){var l=document.getElementById('igpLoader');if(l)l.style.display='none';fr.onload=null;};fr.src='UGS-Files/'+g.f;}addCoins(1);var recent=JSON.parse(localStorage.getItem('recentGames')||'[]');var today=new Date().toDateString();if(!recent.find(function(r){return r.f===g.f&&r.date===today;})){recent.unshift({f:g.f,name:g.name,date:today});if(recent.length>50)recent.pop();localStorage.setItem('recentGames',JSON.stringify(recent));state.gamesPlayed=(state.gamesPlayed||0)+1;}window._gameStartTime=Date.now();updateQuests();saveState();setTimeout(updateGameQuestWidget,200);}
+function rateGame(idx,stars){
+  if(!state.user)return toast('Logga in för att betygsätta','error');
+  var key='rating_'+idx+'_'+state.user;
+  localStorage.setItem(key,stars);
+  var allKey='ratings_'+idx;
+  var all=JSON.parse(localStorage.getItem(allKey)||'{}');
+  all[state.user]=stars;
+  localStorage.setItem(allKey,JSON.stringify(all));
+  updateGameRatingDisplay(idx);
+  toast('Betyg sparat: '+'★'.repeat(stars),'ok');
+}
+function getGameRating(idx){
+  var all=JSON.parse(localStorage.getItem('ratings_'+idx)||'{}');
+  var vals=Object.values(all).map(Number);
+  if(!vals.length)return{avg:0,count:0,myRating:0};
+  var avg=vals.reduce(function(a,b){return a+b;},0)/vals.length;
+  return{avg:Math.round(avg*10)/10,count:vals.length,myRating:parseInt(localStorage.getItem('rating_'+idx+'_'+(state.user||''))||'0')};
+}
+function updateGameRatingDisplay(idx){
+  var info=getGameRating(idx);
+  var el=document.getElementById('igpRatingStars');
+  if(!el)return;
+  var html='';
+  for(var s=1;s<=5;s++){
+    var filled=s<=(info.myRating||Math.round(info.avg));
+    html+='<span onclick="rateGame('+idx+','+s+')" style="cursor:pointer;font-size:20px;color:'+(filled?'#ffd700':'rgba(255,255,255,.3)')+'">&#9733;</span>';
+  }
+  if(info.count)html+='<span style="font-size:11px;color:var(--d);margin-left:6px">'+info.avg+' ('+info.count+')</span>';
+  el.innerHTML=html;
+}
+function openGame(i){var g=GAMES[i];if(!g)return;if(gameIsLocked(i)){toast('Lås upp spelet i butiken!','error');return;}var gName=g.name.replace(/^cl/i,'').trim();_currentGameIdx=i;var fb=document.getElementById('gameFavBtn');if(fb)fb.textContent=(state.favorites.indexOf(i)>=0)?'★':'☆';var si=document.getElementById('gameSubInfo');if(si)si.textContent=(g.cat||'');var gt=document.getElementById('gameTitle');if(gt)gt.textContent=gName;/* Hide grid, filterbar, search, hero */var filterBar=document.querySelector('.filterBar');var searchWrap=document.querySelector('.searchWrap');var gGrid=document.getElementById('gamesGrid');var lmw=document.getElementById('loadMoreWrap');var hero=document.querySelector('.hero');if(filterBar)filterBar.style.display='none';if(searchWrap)searchWrap.style.display='none';if(gGrid)gGrid.style.display='none';if(lmw)lmw.style.display='none';if(hero)hero.style.display='none';var panel=document.getElementById('inlineGamePanel');if(panel)panel.style.display='flex';/* Scroll to top so igp-bar is visible */window.scrollTo({top:0,behavior:'smooth'});/* Reload btn */var rb=document.getElementById('igpReloadBtn');if(rb)rb.onclick=function(){var f=document.getElementById('gameFrame');if(f)f.src=f.src;};/* Show inline loader */var ldr=document.getElementById('igpLoader');if(ldr)ldr.style.display='flex';var fr=document.getElementById('gameFrame');if(fr){fr.onload=function(){var l=document.getElementById('igpLoader');if(l)l.style.display='none';fr.onload=null;};fr.src='UGS-Files/'+g.f;}addCoins(1);var recent=JSON.parse(localStorage.getItem('recentGames')||'[]');var today=new Date().toDateString();if(!recent.find(function(r){return r.f===g.f&&r.date===today;})){recent.unshift({f:g.f,name:g.name,date:today});if(recent.length>50)recent.pop();localStorage.setItem('recentGames',JSON.stringify(recent));state.gamesPlayed=(state.gamesPlayed||0)+1;}window._gameStartTime=Date.now();updateQuests();saveState();setTimeout(updateGameQuestWidget,200);setTimeout(function(){updateGameRatingDisplay(i);},100);checkAchievements();}
 var _currentGameIdx=-1;
 function toggleGameFav(){
   if(_currentGameIdx<0)return;
@@ -1096,6 +1211,28 @@ function renderGames(){
 }
 function openSidebar(){document.getElementById("sidebar").classList.add("open");document.getElementById("sideOverlay").classList.add("open");}
 function closeSidebar(){document.getElementById("sidebar").classList.remove("open");document.getElementById("sideOverlay").classList.remove("open");}
+function renderLeaderboardPanel(){
+  var el=document.getElementById('panel_leaderboard');if(!el)return;
+  var users=getAllUsers();
+  var ranked=users.map(function(u){
+    var d=JSON.parse(localStorage.getItem('jspel_'+u)||'{}');
+    return {user:u,coins:d.coins||0,xp:d.xp||0,level:d.level||1};
+  }).sort(function(a,b){return b.xp-a.xp;});
+  var html='<div class="sideSection"><h4>🏆 Topp spelare (XP)</h4>';
+  ranked.slice(0,15).forEach(function(r,i){
+    var medals=['🥇','🥈','🥉'];
+    var medal=medals[i]||'#'+(i+1);
+    var isMe=r.user===state.user;
+    html+='<div style="display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:10px;background:'+(isMe?'rgba(123,44,255,.2)':'rgba(255,255,255,.03)')+';border:1px solid '+(isMe?'var(--p0)':'var(--line)')+';margin-bottom:4px">';
+    html+='<span style="font-size:16px;width:24px;text-align:center">'+medal+'</span>';
+    html+='<div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:700;color:var(--w);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+r.user+'</div>';
+    html+='<div style="font-size:10px;color:var(--d)">Nivå '+r.level+' · '+r.xp+' XP</div></div>';
+    html+='<span style="font-size:11px;color:var(--p1);font-weight:700">'+r.coins+' 🪙</span>';
+    html+='</div>';
+  });
+  html+='</div>';
+  el.innerHTML=html;
+}
 function switchSideTab(tab){
   document.querySelectorAll(".sideNavBtn").forEach(function(b){b.classList.remove("active");});
   var btn=document.querySelector("[data-tab='"+tab+"']");
@@ -1104,7 +1241,7 @@ function switchSideTab(tab){
   var panel=document.getElementById("panel_"+tab);
   if(panel){panel.classList.add("active");
     panel.style.animation="none";panel.offsetHeight;panel.style.animation="panelIn .25s ease";
-    var renders={favoriter:renderFavsPanel,teman:renderThemePanel,quests:renderQuestsPanel,butik:renderShopPanel,instaellningar:renderSettingsPanel,profil:renderProfilePanel,admin:renderAdminPanel,updates:renderUpdatesPanel,inventory:renderInventoryPanel};
+    var renders={favoriter:renderFavsPanel,teman:renderThemePanel,quests:renderQuestsPanel,butik:renderShopPanel,instaellningar:renderSettingsPanel,profil:renderProfilePanel,admin:renderAdminPanel,updates:renderUpdatesPanel,inventory:renderInventoryPanel,leaderboard:renderLeaderboardPanel,achievements:function(){renderAchievementsPanel(document.getElementById('panel_achievements'));}};
     if(renders[tab])renders[tab]();
   }
 }
@@ -1555,6 +1692,27 @@ function doLogin(){
     finishLogin();
   }
 }
+function checkDailyStreak(){
+  if(!state.user)return;
+  var today=new Date().toDateString();
+  var key='daily_streak_'+state.user;
+  var data=JSON.parse(localStorage.getItem(key)||'{"streak":0,"last":""}');
+  var yesterday=new Date(Date.now()-86400000).toDateString();
+  if(data.last===today)return;
+  if(data.last===yesterday){
+    data.streak=(data.streak||0)+1;
+  }else{
+    data.streak=1;
+  }
+  data.last=today;
+  localStorage.setItem(key,JSON.stringify(data));
+  var bonus=Math.min(data.streak*5,50);
+  addCoins(bonus,'Daglig inloggning dag '+data.streak);
+  setTimeout(function(){
+    toast('🔥 Dag '+data.streak+' streak! +'+bonus+' mynt','ok');
+  },1500);
+  updateHUD();
+}
 function finishLogin(){
   document.getElementById("loginBtn").style.display="none";
   document.getElementById("userInfo").style.display="flex";
@@ -1571,6 +1729,9 @@ function finishLogin(){
   saveState();
   var broadcast=JSON.parse(localStorage.getItem("broadcast")||"null");
   if(broadcast&&broadcast.msg){setTimeout(function(){toast("📢 "+broadcast.msg,5000);},500);}
+  ensureJoinDate();
+  checkDailyStreak();
+  showSiteAnnouncements();
 }
 function doLogout(){
   saveState();
@@ -1583,8 +1744,17 @@ function doLogout(){
   updateHUD();closeSidebar();renderGames();
   toast("Loggad ut");
 }
-function openChat(){document.getElementById("chatOverlay").classList.add("open");closeSidebar();loadChatMsgs();}
-function closeChat(){document.getElementById("chatOverlay").classList.remove("open");}
+function openChat(){
+  var ov=document.getElementById("chatOverlay");if(!ov)return;
+  _resetWinPos(document.getElementById("chatWin"));
+  ov.style.display="flex";
+  setTimeout(function(){ov.classList.add("open");},10);
+  closeSidebar();loadChatMsgs();
+}
+function closeChat(){
+  var ov=document.getElementById("chatOverlay");
+  if(ov){ov.classList.remove("open");setTimeout(function(){ov.style.display="none";},200);}
+}
 function _renderChatMsgs(msgs){var el=document.getElementById('chatMessages');if(!el)return;el.innerHTML=msgs.map(function(m){var isMe=m.user===state.user;var av=localStorage.getItem('avatar_'+m.user)||'';var avatarHtml=av?'<img src="'+av+'" onclick="viewProfile(this.dataset.u)" data-u="'+m.user+'" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--p1);cursor:pointer">':'<div onclick="viewProfile(this.dataset.u)" data-u="'+m.user+'" style="width:28px;height:28px;border-radius:50%;background:var(--p0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;color:#fff;cursor:pointer">'+m.user.charAt(0).toUpperCase()+'</div>';var time=m.ts?new Date(m.ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'';var isAdmin=m.isAdmin||m.user==='[ADMIN]';return'<div style="display:flex;align-items:flex-end;gap:6px;margin:6px 0;'+(isMe?'flex-direction:row-reverse':'')+'">'+ avatarHtml+'<div style="max-width:70%">'+(isMe||isAdmin?'':'<div style="font-size:10px;color:var(--d);margin-bottom:2px;padding-left:4px;cursor:pointer" onclick="viewProfile(\'' + m.user + '\')">'+m.user+'</div>')+'<div style="background:'+(isAdmin?'rgba(255,80,0,.25)':isMe?'var(--p0)':'var(--glass2)')+';color:var(--w);padding:7px 11px;border-radius:'+(isMe?'14px 14px 4px 14px':'14px 14px 14px 4px')+';font-size:13px;word-break:break-word">'+m.text+'</div><div style="font-size:10px;color:var(--d);margin-top:2px;text-align:'+(isMe?'right':'left')+'">'+time+'</div></div></div>';}).join('');el.scrollTop=el.scrollHeight;}
 function loadChatMsgs(){
   if(_sb){
@@ -1643,8 +1813,38 @@ function adminKick(u){if(u===state.user)return toast('Kan inte kicka dig själv'
 function adminBan(u){if(u===state.user)return toast('Kan inte banna dig själv','error');var banned=JSON.parse(localStorage.getItem('bannedUsers')||'[]');if(banned.indexOf(u)<0){banned.push(u);localStorage.setItem('bannedUsers',JSON.stringify(banned));}toast(u+' bannades','ok');renderAdminPanel();}
 function adminUnban(u){var banned=JSON.parse(localStorage.getItem('bannedUsers')||'[]');var idx=banned.indexOf(u);if(idx>=0){banned.splice(idx,1);localStorage.setItem('bannedUsers',JSON.stringify(banned));}toast(u+' avbannades','ok');renderAdminPanel();}
 function adminClearChat(){if(!confirm('Rensa all chatt?'))return;localStorage.setItem('globalChat','[]');toast('Chatten rensades','ok');renderAdminPanel();if(document.getElementById('chatMessages'))loadChatMsgs();}
-function addAnnouncement(){var inp=document.getElementById('adminAnnounceInput');if(!inp||!inp.value.trim())return toast('Skriv ett tillkännagivande','error');var ann=JSON.parse(localStorage.getItem('admin_announcements')||'[]');ann.unshift(inp.value.trim());if(ann.length>10)ann.pop();localStorage.setItem('admin_announcements',JSON.stringify(ann));inp.value='';toast('Tillagt','ok');renderAdminPanel();}
-function removeAnnouncement(i){var ann=JSON.parse(localStorage.getItem('admin_announcements')||'[]');ann.splice(i,1);localStorage.setItem('admin_announcements',JSON.stringify(ann));toast('Borttaget','ok');renderAdminPanel();}
+function showSiteAnnouncements(){
+  var ann=JSON.parse(localStorage.getItem('admin_announcements')||'[]');
+  var dismissed=JSON.parse(localStorage.getItem('dismissed_announcements')||'[]');
+  var active=ann.filter(function(a){return dismissed.indexOf(a)<0;});
+  var banner=document.getElementById('siteAnnouncementBanner');
+  var textEl=document.getElementById('siteAnnouncementText');
+  if(active.length&&banner&&textEl){
+    textEl.textContent='📣 '+active[0];
+    banner.style.display='block';
+    var main=document.querySelector('.main');
+    if(main)main.style.paddingTop='44px';
+  }else if(banner){
+    banner.style.display='none';
+    var main=document.querySelector('.main');
+    if(main)main.style.paddingTop='';
+  }
+}
+function dismissSiteAnnouncement(){
+  var textEl=document.getElementById('siteAnnouncementText');
+  if(textEl){
+    var text=textEl.textContent.replace('📣 ','');
+    var dismissed=JSON.parse(localStorage.getItem('dismissed_announcements')||'[]');
+    dismissed.push(text);
+    localStorage.setItem('dismissed_announcements',JSON.stringify(dismissed));
+  }
+  var banner=document.getElementById('siteAnnouncementBanner');
+  if(banner)banner.style.display='none';
+  var main=document.querySelector('.main');
+  if(main)main.style.paddingTop='';
+}
+function addAnnouncement(){var inp=document.getElementById('adminAnnounceInput');if(!inp||!inp.value.trim())return toast('Skriv ett tillkännagivande','error');var ann=JSON.parse(localStorage.getItem('admin_announcements')||'[]');ann.unshift(inp.value.trim());if(ann.length>10)ann.pop();localStorage.setItem('admin_announcements',JSON.stringify(ann));inp.value='';localStorage.removeItem('dismissed_announcements');showSiteAnnouncements();toast('Tillkännagivande publicerat! 📣','ok');renderAdminPanel();}
+function removeAnnouncement(i){var ann=JSON.parse(localStorage.getItem('admin_announcements')||'[]');ann.splice(i,1);localStorage.setItem('admin_announcements',JSON.stringify(ann));toast('Borttaget','ok');showSiteAnnouncements();renderAdminPanel();}
 function handleAvatarUpload(input){if(!input.files||!input.files[0])return;var file=input.files[0];if(!file.type.startsWith('image/')){toast('Bara bildfiler är tillåtna','error');return;}if(file.size>5242880){toast('Bilden är för stor (max 5MB)','error');return;}var reader=new FileReader();reader.onload=function(e){var b64=e.target.result;localStorage.setItem('avatar_'+state.user,b64);/* Update topbar avatar */var ud=document.getElementById('userAvatarDisplay');if(ud){ud.innerHTML='';var img=document.createElement('img');img.src=b64;img.style.cssText='width:100%;height:100%;object-fit:cover;border-radius:50%';ud.appendChild(img);}toast('Profilbild uppdaterad! 📸','ok');renderProfilePanel();};reader.readAsDataURL(file);}
 function claimQuest(id){var today=new Date().toDateString();var key='quests_'+state.user+'_'+today;var saved=JSON.parse(localStorage.getItem(key)||'{"claimed":[]}');if(!saved.claimed)saved.claimed=[];if(saved.claimed.indexOf(id)>=0)return toast('Quest redan hämtad!','error');var quests=getQuests();var q=quests.find(function(q){return q.id===id;});if(!q||!q.done)return toast('Quest ej klar!','error');saved.claimed.push(id);localStorage.setItem(key,JSON.stringify(saved));addCoins(q.reward);toast('+'+q.reward+' mynt! Quest klar!','ok');renderQuestsPanel();}
 function applyTheme(name){var themes={purple:{"--p0":"#7b2cff","--p1":"#b56cff","--p2":"#3a00b7","--bg0":"#050008","--bg1":"#0b0014","--bg2":"#120022"},neon:{"--p0":"#00ffcc","--p1":"#00e5ff","--p2":"#007a5e","--bg0":"#000a08","--bg1":"#00150f","--bg2":"#001a10"},gold:{"--p0":"#ffaa00","--p1":"#ffd166","--p2":"#a06800","--bg0":"#0a0600","--bg1":"#130900","--bg2":"#1a0d00"},red:{"--p0":"#ff2d55","--p1":"#ff6b6b","--p2":"#8b0000","--bg0":"#080003","--bg1":"#100008","--bg2":"#160005"},blue:{"--p0":"#2979ff","--p1":"#82b1ff","--p2":"#0040ca","--bg0":"#000510","--bg1":"#000a1f","--bg2":"#000e2b"},pink:{"--p0":"#e91e8c","--p1":"#ff80c8","--p2":"#9c006a","--bg0":"#08000a","--bg1":"#120010","--bg2":"#180015"}};var t=themes[name]||themes.purple;var r=document.documentElement;var isLight=state&&state.settings&&state.settings.darkMode===false;Object.keys(t).forEach(function(k){if(isLight&&(k==="--bg0"||k==="--bg1"||k==="--bg2"))return;r.style.setProperty(k,t[k]);});if(isLight)Object.keys(_LIGHT_BG).forEach(function(k){r.style.setProperty(k,_LIGHT_BG[k]);});var p0=t['--p0'];document.querySelectorAll('[class*="bg-orb"]').forEach(function(el,i){if(i===0)el.style.background='radial-gradient(circle,'+p0+'44,transparent 70%)';else if(i===1)el.style.background='radial-gradient(circle,'+p0+'33,transparent 70%)';else el.style.background='radial-gradient(circle,'+p0+'22,transparent 70%)';});document.querySelectorAll('.bg-grid').forEach(function(el){el.style.backgroundImage='linear-gradient('+p0+'18 1px,transparent 1px),linear-gradient(90deg,'+p0+'18 1px,transparent 1px)';});state.settings.theme=name;localStorage.setItem('jspel_'+state.user,JSON.stringify({coins:state.coins,xp:state.xp,level:state.level,favorites:state.favorites,gamesPlayed:state.gamesPlayed,settings:state.settings}));}
@@ -1745,46 +1945,130 @@ function closeViewProfile(){
   var ov=document.getElementById("viewProfileOverlay");
   if(ov){ov.classList.remove("open");setTimeout(function(){ov.style.display="none";},200);}
 }
+function getProfileExt(username){
+  return JSON.parse(localStorage.getItem('profile_ext_'+username)||'{}');
+}
+function setProfileExt(data){
+  if(!state.user)return;
+  var existing=getProfileExt(state.user);
+  var merged=Object.assign(existing,data);
+  localStorage.setItem('profile_ext_'+state.user,JSON.stringify(merged));
+}
+function ensureJoinDate(){
+  if(!state.user)return;
+  var ext=getProfileExt(state.user);
+  if(!ext.joinDate){
+    setProfileExt({joinDate:new Date().toISOString().split('T')[0]});
+  }
+}
+function openProfileEditModal(){
+  var ext=getProfileExt(state.user);
+  var mo=document.getElementById('profileEditModal');
+  if(!mo)return;
+  document.getElementById('pemBio').value=ext.bio||'';
+  document.getElementById('pemStatus').value=ext.status||'';
+  document.getElementById('pemFeatured').value=ext.featuredItem||'';
+  mo.style.display='flex';
+}
+function closeProfileEditModal(){
+  var mo=document.getElementById('profileEditModal');
+  if(mo)mo.style.display='none';
+}
+function saveProfileEdit(){
+  var bio=document.getElementById('pemBio').value.trim().slice(0,150);
+  var status=document.getElementById('pemStatus').value.trim().slice(0,60);
+  var featured=document.getElementById('pemFeatured').value.trim();
+  setProfileExt({bio:bio,status:status,featuredItem:featured});
+  closeProfileEditModal();
+  toast('Profil uppdaterad! ✨','ok');
+}
+function handleBannerUpload(input){
+  if(!input.files||!input.files[0])return;
+  var file=input.files[0];
+  if(!file.type.startsWith('image/'))return toast('Bara bildfiler','error');
+  if(file.size>3145728)return toast('Max 3MB','error');
+  var reader=new FileReader();
+  reader.onload=function(e){
+    setProfileExt({customBanner:e.target.result});
+    toast('Banner uppdaterad! 🖼️','ok');
+  };
+  reader.readAsDataURL(file);
+}
+function pinCurrentGame(){
+  if(_currentGameIdx<0)return toast('Öppna ett spel först','error');
+  var g=GAMES[_currentGameIdx];if(!g)return;
+  var ext=getProfileExt(state.user);
+  var pins=ext.pinnedGames||[];
+  if(pins.find(function(p){return p.f===g.f;}))return toast('Redan pinnead','error');
+  pins.unshift({name:g.name,f:g.f,cat:g.cat||''});
+  if(pins.length>3)pins.pop();
+  setProfileExt({pinnedGames:pins});
+  toast('Spel pinneat på profilen! 📌','ok');
+}
+function unpinGame(f){
+  var ext=getProfileExt(state.user);
+  var pins=(ext.pinnedGames||[]).filter(function(p){return p.f!==f;});
+  setProfileExt({pinnedGames:pins});
+  if(document.getElementById('viewProfileOverlay').classList.contains('open'))viewProfile(state.user);
+}
 function _renderProfileCard(card,username){
   var isSelf=(username===state.user);
-  /* Try to get data from localStorage (works for local profiles) */
   var uData=JSON.parse(localStorage.getItem("jspel_"+username)||"{}");
   var eq=(uData.settings&&uData.settings.equipped)||{};
   var av=localStorage.getItem("avatar_"+username)||"";
+  var ext=getProfileExt(username);
   var level=uData.level||1;
   var coins=isSelf?state.coins:(uData.coins||0);
   var favs=isSelf?state.favorites.length:(uData.favorites||[]).length;
   var friends=JSON.parse(localStorage.getItem("friends_"+username)||"[]");
   var myFriends=state.user?JSON.parse(localStorage.getItem("friends_"+state.user)||"[]"):[];
   var isFriend=myFriends.indexOf(username)>=0;
-
-  /* Banner */
-  var bannerStyle=getBannerStyle(eq.effect||null);
-  /* Avatar */
+  /* Banner - custom upload takes priority */
+  var bannerStyle=ext.customBanner?'background:url('+ext.customBanner+') center/cover no-repeat;':getBannerStyle(eq.effect||null);
   var frameClass=getFrameClass(eq.frame||null);
   var avatarHTML=av
     ?'<img src="'+av+'" class="pc-avatar '+frameClass+'" style="width:72px;height:72px">'
     :'<div class="pc-avatar '+frameClass+'" style="background:var(--p0);width:72px;height:72px">'+username.charAt(0).toUpperCase()+'</div>';
-  /* Name effect */
   var nameClass=getNameClass(eq.nameeffect||null);
-  /* Badges */
   var badgesHTML="";
   if(eq.badge)badgesHTML+=getBadgeHTML(eq.badge);
+  /* Status */
+  var statusHTML=ext.status?'<div class="pc-status"><span class="pc-status-dot"></span>'+ext.status+'</div>':'';
+  /* Bio */
+  var bioHTML=ext.bio?'<div class="pc-bio">'+ext.bio+'</div>':'';
+  /* Join date */
+  var joinHTML=ext.joinDate?'<div style="font-size:10px;color:var(--d);margin-top:2px">📅 Gick med '+ext.joinDate+'</div>':'';
+  /* Showcase */
+  var showcaseItems=[];
+  if(eq.frame)showcaseItems.push('<div class="pc-showcase-item" title="Ram">'+getFrameClass(eq.frame).replace('frame-','')+'<br><small>Ram</small></div>');
+  if(eq.badge)showcaseItems.push('<div class="pc-showcase-item">'+getBadgeHTML(eq.badge)+'<br><small>Badge</small></div>');
+  if(eq.nameeffect)showcaseItems.push('<div class="pc-showcase-item">✨<br><small>Namn-effekt</small></div>');
+  if(eq.effect)showcaseItems.push('<div class="pc-showcase-item">🎨<br><small>Banner</small></div>');
+  var showcaseHTML=showcaseItems.length?'<div class="pc-divider"></div><div class="pc-showcase-title">🏆 Showcase</div><div class="pc-showcase">'+showcaseItems.join('')+'</div>':'';
+  /* Pinned games */
+  var pins=ext.pinnedGames||[];
+  var pinsHTML='';
+  if(pins.length){
+    pinsHTML='<div class="pc-divider"></div><div class="pc-showcase-title">📌 Pinnade spel</div><div class="pc-pins">';
+    pins.forEach(function(p){
+      pinsHTML+='<div class="pc-pin-item" onclick="closeViewProfile();openGameByFile(\''+p.f+'\')">🎮 '+p.name+'</div>';
+    });
+    pinsHTML+='</div>';
+  }
   /* Actions */
   var actionsHTML="";
   if(!isSelf&&state.user){
     if(isFriend){
-      actionsHTML='<button onclick="removeFriend(\''+username+'\');closeViewProfile();toast(\'Vän borttagen\')" style="background:rgba(255,50,50,.2);color:#ff6b6b;border:1px solid rgba(255,50,50,.3);flex:1;padding:9px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer">\u274C Ta bort vän</button>';
+      actionsHTML='<button onclick="removeFriend(\'' + username + '\');closeViewProfile();toast(\'Vän borttagen\')" style="background:rgba(255,50,50,.2);color:#ff6b6b;border:1px solid rgba(255,50,50,.3);flex:1;padding:9px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer">✕ Ta bort vän</button>';
     }else{
-      actionsHTML='<button onclick="addFriendDirect(\''+username+'\');closeViewProfile();toast(\'+Vän tillagd \u2728\',\'ok\')" style="background:var(--p0);color:#fff;flex:1;padding:9px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;border:none">+ Lägg till vän</button>';
+      actionsHTML='<button onclick="addFriendDirect(\'' + username + '\');closeViewProfile();toast(\'+Vän tillagd ✨\',\'ok\')" style="background:var(--p0);color:#fff;flex:1;padding:9px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;border:none">+ Lägg till vän</button>';
     }
   }
   if(isSelf){
-    actionsHTML='<button onclick="closeViewProfile();openProfileOverlay()" style="background:var(--glass);color:var(--w);border:1px solid var(--line);flex:1;padding:9px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer">\U0001F4DD Redigera profil</button>';
+    actionsHTML='<button onclick="openProfileEditModal()" style="background:var(--p0);color:#fff;border:none;flex:1;padding:9px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer">✏️ Redigera</button>';
+    actionsHTML+='<label style="background:var(--glass);color:var(--w);border:1px solid var(--line);flex:1;padding:9px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;text-align:center;display:flex;align-items:center;justify-content:center">🖼️ Banner<input type="file" accept="image/*" style="display:none" onchange="handleBannerUpload(this)"></label>';
   }
   actionsHTML+='<button onclick="closeViewProfile()" style="background:var(--glass);color:var(--d);border:1px solid var(--line);flex:1;padding:9px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer">Stäng</button>';
-
-  /* For own profile, wrap avatar in upload label */
   var avatarWrapHTML=isSelf
     ?'<label for="pcFileInput" style="cursor:pointer;display:block;position:relative">'+avatarHTML+'<div style="position:absolute;bottom:2px;right:2px;width:22px;height:22px;border-radius:50%;background:var(--p0);display:flex;align-items:center;justify-content:center;font-size:10px;border:2px solid var(--bg1)">📷</div></label>'
     :avatarHTML;
@@ -1795,20 +2079,23 @@ function _renderProfileCard(card,username){
     +'</div>'
     +'<div class="pc-body">'
     +'<div class="pc-name-row"><span class="pc-username '+nameClass+'">'+username+'</span></div>'
+    +statusHTML
     +(badgesHTML?'<div class="pc-badges">'+badgesHTML+'</div>':'')
-    +'<div class="pc-level">Nivå '+level+(isSelf?' \u00B7 \U0001F9E9 '+state.xp+' XP':'')+''+'</div>'
+    +'<div class="pc-level">Nivå '+level+(isSelf?' · 🧠 '+state.xp+' XP':'')+'</div>'
+    +joinHTML
+    +bioHTML
     +'<div class="pc-divider"></div>'
     +'<div class="pc-stats">'
-    +'<div class="pc-stat"><span>'+coins+'</span><small>\U0001F4B0 Mynt</small></div>'
-    +'<div class="pc-stat"><span>'+favs+'</span><small>\u2B50 Favs</small></div>'
-    +'<div class="pc-stat"><span>'+friends.length+'</span><small>\U0001F465 Vänner</small></div>'
+    +'<div class="pc-stat"><span>'+coins+'</span><small>💰 Mynt</small></div>'
+    +'<div class="pc-stat"><span>'+favs+'</span><small>⭐ Favs</small></div>'
+    +'<div class="pc-stat"><span>'+friends.length+'</span><small>👥 Vänner</small></div>'
     +'</div>'
+    +showcaseHTML
+    +pinsHTML
     +'<div class="pc-divider"></div>'
     +'<div class="pc-actions">'+actionsHTML+'</div>'
     +(isSelf?'<input type="file" id="pcFileInput" accept="image/*" style="display:none" onchange="handleAvatarUpload(this);closeViewProfile();">':'')
     +'</div>';
-
-  /* If Supabase available, try to enrich with server data */
   if(_sb&&!isSelf){
     _sb.from("accounts").select("username,is_admin").eq("username",username).single().then(function(res){
       if(res.data&&res.data.is_admin){
@@ -1816,12 +2103,15 @@ function _renderProfileCard(card,username){
         if(nr&&!nr.querySelector(".admin-badge")){
           var ab=document.createElement("span");ab.className="pc-badge admin-badge";
           ab.style.cssText="background:#ff6b0022;color:#ff6b00;border:1px solid #ff6b0055";
-          ab.textContent="\U0001F6E1\uFE0F Admin";
-          nr.appendChild(ab);
+          ab.textContent="🛡️ Admin";nr.appendChild(ab);
         }
       }
     });
   }
+}
+function openGameByFile(f){
+  var idx=GAMES.findIndex(function(g){return g.f===f;});
+  if(idx>=0)openGame(idx);
 }
 
 /* ---- UPDATED PROFILE PANEL (sidebar) ---- */
@@ -1886,6 +2176,19 @@ function openInventoryWindow(){
 }
 function closeInventoryWindow(){
   var ov=document.getElementById('inventoryOverlay');
+  if(ov){ov.classList.remove('open');setTimeout(function(){ov.style.display='none';},200);}
+}
+function openSoundboardWindow(){
+  var ov=document.getElementById('soundboardOverlay');if(!ov)return;
+  _resetWinPos(document.getElementById('soundboardWin'));
+  var fr=document.getElementById('soundboardFrame');
+  if(fr&&!fr.src.includes('jakobsigma'))fr.src='https://jakobsigma.github.io/Sound-board/';
+  ov.style.display='flex';
+  setTimeout(function(){ov.classList.add('open');},10);
+  closeSidebar();
+}
+function closeSoundboardWindow(){
+  var ov=document.getElementById('soundboardOverlay');
   if(ov){ov.classList.remove('open');setTimeout(function(){ov.style.display='none';},200);}
 }
 function renderInventoryWin(){
@@ -1970,6 +2273,12 @@ document.addEventListener("DOMContentLoaded",function(){
   if(invWin&&invBar)makeDraggable(invWin,invBar);
   var pCard=document.getElementById('profileCard');
   if(pCard)makeDraggable(pCard,pCard);
+  var chatWin=document.getElementById('chatWin');
+  var chatBar=document.getElementById('chatWinBar');
+  if(chatWin&&chatBar)makeDraggable(chatWin,chatBar);
+  var sbWin=document.getElementById('soundboardWin');
+  var sbBar=document.getElementById('soundboardWinBar');
+  if(sbWin&&sbBar)makeDraggable(sbWin,sbBar);
   document.querySelectorAll('.panelWin').forEach(function(pw){
     var ph=pw.querySelector('.panelHead');
     if(ph)makeDraggable(pw,ph);
@@ -1992,6 +2301,7 @@ document.addEventListener("DOMContentLoaded",function(){
   }else{
     renderGames();
     switchSideTab("favoriter");
+    showSiteAnnouncements();
   }
   if(state.settings&&state.settings.theme&&state.settings.theme!=="purple")applyTheme(state.settings.theme);
   applyDarkMode(state.settings&&state.settings.darkMode===true);
@@ -2201,5 +2511,27 @@ function applyLang(){
     <button class="pill primary" onclick="cookieAccept()" style="padding:8px 18px;font-size:12px">Accept ✓</button>
   </div>
 </div>
+<div class="modal" id="profileEditModal" style="z-index:4000">
+  <div class="modalBox" style="width:min(420px,94vw)">
+    <h2>✏️ Redigera profil</h2>
+    <div class="formGroup">
+      <label>Status (max 60 tecken)</label>
+      <input id="pemStatus" maxlength="60" placeholder="🟢 Online och spelar...">
+    </div>
+    <div class="formGroup">
+      <label>Bio / About me (max 150 tecken)</label>
+      <textarea id="pemBio" maxlength="150" placeholder="Berätta om dig själv..." style="width:100%;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:10px;padding:10px 13px;color:var(--w);font-size:13px;font-family:inherit;resize:vertical;min-height:70px"></textarea>
+    </div>
+    <div class="formGroup">
+      <label>Featured item ID (lämna tomt för inget)</label>
+      <input id="pemFeatured" placeholder="t.ex. frame_gold">
+    </div>
+    <div class="formRow">
+      <button class="pill primary" onclick="saveProfileEdit()" style="flex:1">💾 Spara</button>
+      <button class="pill ghost" onclick="closeProfileEditModal()" style="flex:1">Avbryt</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
