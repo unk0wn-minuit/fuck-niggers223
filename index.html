@@ -150,7 +150,7 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
 .chatInputRow input:focus{outline:none;border-color:var(--p0);}
 .main{padding-top:64px;}
 .hero{padding:36px 24px 20px;text-align:center;}
-.hero h1{font-size:clamp(26px,5vw,50px);font-weight:900;background:linear-gradient(135deg,var(--w),var(--p1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:14px;}
+.hero h1{font-size:clamp(32px,6vw,64px);font-weight:900;letter-spacing:-.02em;background:linear-gradient(135deg,var(--w) 0%,var(--p1) 60%,var(--p0) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px;line-height:1.1;}
 .hintRow{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
 .hintPill{background:rgba(123,44,255,.15);border:1px solid var(--line);border-radius:20px;padding:5px 13px;font-size:11px;color:var(--m);}
 .filterBar{display:flex;gap:8px;padding:0 24px 14px;overflow-x:auto;scrollbar-width:none;}
@@ -220,14 +220,14 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
 
 
 /* ---- LADDNINGS-ANIMATION ---- */
-.loader-overlay{position:fixed;top:0;left:0;right:0;z-index:9998;height:3px;opacity:0;pointer-events:none;transition:opacity .15s;}
+.loader-overlay{position:fixed;inset:0;z-index:9999;background:var(--bg0);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s;}
 .loader-overlay.visible{opacity:1;}
-.loader-bar{height:100%;background:linear-gradient(90deg,var(--p2),var(--p1),var(--p0));background-size:200% 100%;width:0%;border-radius:0 2px 2px 0;box-shadow:0 0 10px var(--p1);}
+.loader-overlay.visible{opacity:1;pointer-events:all;}.loader-box{background:var(--glass);border:1px solid var(--line);border-radius:20px;padding:38px 52px;text-align:center;min-width:320px;max-width:480px;box-shadow:0 20px 60px rgba(0,0,0,.5);}.loader-title{font-size:22px;font-weight:900;background:linear-gradient(135deg,var(--w),var(--p1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:22px;}.loader-bar-track{width:100%;height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden;margin-bottom:14px;}.loader-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--p2),var(--p1),var(--p0));background-size:200% 100%;border-radius:3px;}
 .loader-bar.going{animation:barGrow 2.8s ease-out forwards;}
 @keyframes barGrow{0%{width:0%;}40%{width:60%;}70%{width:82%;}100%{width:95%;}}
-.loader-msg{position:fixed;top:10px;left:50%;transform:translateX(-50%);z-index:9999;font-size:11px;color:var(--p1);opacity:0;pointer-events:none;transition:opacity .3s;white-space:nowrap;text-shadow:0 0 12px var(--p1);letter-spacing:.05em;}
-.loader-msg.visible{opacity:1;}
-.panel-fade{animation:panelIn .25s ease;}
+.loader-msg{font-size:12px;color:var(--d);min-height:18px;}
+
+.browserOverlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:1000;display:none;align-items:center;justify-content:center;}.browserOverlay.open{display:flex;}.browserWin{width:95vw;height:92vh;max-width:1500px;background:var(--p3);border:1px solid var(--line);border-radius:var(--r);display:flex;flex-direction:column;overflow:hidden;transition:all .25s;box-shadow:0 30px 80px rgba(0,0,0,.6);}.browserWin.bfull{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;max-width:none!important;border-radius:0!important;}.browserBar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--glass);flex-shrink:0;}.browserBar h3{flex:1;margin:0;font-size:14px;font-weight:700;color:var(--w);}.browserBar button{background:none;border:none;color:var(--d);font-size:16px;cursor:pointer;padding:4px 8px;border-radius:6px;transition:background .15s;}.browserBar button:hover{background:var(--glass);color:var(--w);}.browserFrame{flex:1;border:none;width:100%;}.panel-fade{animation:panelIn .25s ease;}
 @keyframes panelIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
 /* Game frame loading */
 .game-loader{position:absolute;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:2;}
@@ -267,7 +267,7 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
 </head>
 <body>
 <div class="bg">
-<div id="loaderOverlay" class="loader-overlay"><div class="loader-bar" id="loaderBar"></div></div><div class="loader-msg" id="loaderMsg"></div><div class="bg-grid"></div><div class="bg-noise"></div><div class="bg-orb o1"></div><div class="bg-orb o2"></div><div class="bg-orb o3"></div></div>
+<div id="loaderOverlay" class="loader-overlay"><div class="loader-box"><div class="loader-title" id="loaderTitle">Loading...</div><div class="loader-bar-track"><div class="loader-bar" id="loaderBar"></div></div><div class="loader-msg" id="loaderMsg"></div></div></div><div class="bg-grid"></div><div class="bg-noise"></div><div class="bg-orb o1"></div><div class="bg-orb o2"></div><div class="bg-orb o3"></div></div>
 <div class="toastContainer" id="toastContainer"></div>
 
 <header class="topbar">
@@ -308,6 +308,8 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
     <button class="sideNavBtn" data-tab="instaellningar" onclick="switchSideTab('instaellningar')"><span class="sideNavIcon">⚙️</span><span class="sideNavLabel" data-i18n="nav_settings">Settings</span></button>
     <button class="sideNavBtn" onclick="closeSidebar();openChat()"><span class="sideNavIcon">💬</span><span class="sideNavLabel" data-i18n="nav_chat">Chat</span></button>
     <button class="sideNavBtn" data-tab="discord" onclick="openDiscord()"><span class="sideNavIcon">🟣</span><span class="sideNavLabel">Discord</span></button>
+    <button class="sideNavBtn" onclick="openBrowser('browser')"><span class="sideNavIcon">🌐</span><span class="sideNavLabel">Browser</span></button>
+    <button class="sideNavBtn" onclick="openBrowser('ai')"><span class="sideNavIcon">🤖</span><span class="sideNavLabel">Jakob AI</span></button>
     <button class="sideNavBtn" id="adminNav" data-tab="admin" onclick="openPanelOverlay('admin')" style="display:none"><span class="sideNavIcon">🛡</span><span class="sideNavLabel" data-i18n="nav_admin">Admin</span></button>
   </nav>
   <div class="sideContent" id="sideContent">
@@ -537,16 +539,18 @@ function applyDarkMode(isDark){
 /* ---- LOADER ---- */
 var _loaderMsgs=["Laddar pixlar...","Kompilerar drömmar...","Värmer upp konsolerna...","Hackar matrisen...","Laddar hemliga nivåer...","Synkroniserar med servrar...","Initierar spellogik...","Förbereder episka upplevelser...","Dekrypterar mysterier...","Kalibrerar dimensioner...","Aktiverar cheat codes...","Söker easter eggs...","Buffrar verkligheten...","Laddade nivå ∞...","Kopierar universum..."];
 var _loaderMsgInterval=null;
-function showLoader(){
+function showLoader(title){
   var o=document.getElementById("loaderOverlay");
   var bar=document.getElementById("loaderBar");
   var msg=document.getElementById("loaderMsg");
+  var tit=document.getElementById("loaderTitle");
   if(!o)return;
+  if(tit)tit.textContent=title||"Loading...";
   bar.className="loader-bar";void bar.offsetHeight;bar.className="loader-bar going";
   o.classList.add("visible");
   if(msg){
     var msgs=_loaderMsgs.slice().sort(function(){return Math.random()-.5;});
-    var i=0;msg.textContent=msgs[0];msg.classList.add("visible");
+    var i=0;msg.textContent=msgs[0];
     _loaderMsgInterval=setInterval(function(){i=(i+1)%msgs.length;msg.textContent=msgs[i];},700);
   }
 }
@@ -580,6 +584,34 @@ function openPanelOverlay(name){
   }else if(_overlayRenders[name]){
     setTimeout(_overlayRenders[name],10);
   }
+}
+function openBrowser(type){
+  var overlay=document.getElementById('browserOverlay');
+  var frame=document.getElementById('browserFrame');
+  var title=document.getElementById('browserTitle');
+  if(!overlay)return;
+  if(type==='ai'){
+    if(title)title.textContent='🤖 Jakob AI';
+    frame.src='UGS-Files/jakobai.html';
+  } else {
+    if(title)title.textContent='🌐 Browser';
+    frame.src='UGS-Files/browser.html';
+  }
+  overlay.classList.add('open');
+  document.getElementById('browserWin').classList.remove('bfull');
+}
+function closeBrowser(){
+  var overlay=document.getElementById('browserOverlay');
+  if(overlay)overlay.classList.remove('open');
+  var frame=document.getElementById('browserFrame');
+  if(frame)frame.src='';
+}
+function toggleBrowserFull(){
+  var win=document.getElementById('browserWin');
+  var btn=document.getElementById('bFullBtn');
+  if(!win)return;
+  win.classList.toggle('bfull');
+  if(btn)btn.textContent=win.classList.contains('bfull')?'⤓':'⛶';
 }
 function openDiscord(){
   var w=900,h=650;
@@ -665,7 +697,7 @@ function unlockGame(idx){
   ul.push(idx);localStorage.setItem("unlocked_"+state.user,JSON.stringify(ul));
   saveState();updateHUD();toast("Spel upplåst!");renderGames();
 }
-function openGame(i){var g=GAMES[i];if(!g)return;if(gameIsLocked(i)){toast('Lås upp spelet i butiken!','error');return;}document.getElementById('gameTitle').textContent=g.name.replace(/^cl/i,'').trim();showLoader();document.getElementById('gameOverlay').style.display='flex';var fr=document.getElementById('gameFrame');if(fr){fr.onload=function(){hideLoader();fr.onload=null;};fr.src='UGS-Files/'+g.f;}addCoins(1);var recent=JSON.parse(localStorage.getItem('recentGames')||'[]');var today=new Date().toDateString();if(!recent.find(function(r){return r.f===g.f&&r.date===today;})){recent.unshift({f:g.f,name:g.name,date:today});if(recent.length>50)recent.pop();localStorage.setItem('recentGames',JSON.stringify(recent));state.gamesPlayed=(state.gamesPlayed||0)+1;}window._gameStartTime=Date.now();updateQuests();saveState();}
+function openGame(i){var g=GAMES[i];if(!g)return;if(gameIsLocked(i)){toast('Lås upp spelet i butiken!','error');return;}document.getElementById('gameTitle').textContent=g.name.replace(/^cl/i,'').trim();showLoader('Loading '+g.name.replace(/^cl/i,'').trim());document.getElementById('gameOverlay').style.display='flex';var fr=document.getElementById('gameFrame');if(fr){fr.onload=function(){hideLoader();fr.onload=null;};fr.src='UGS-Files/'+g.f;}addCoins(1);var recent=JSON.parse(localStorage.getItem('recentGames')||'[]');var today=new Date().toDateString();if(!recent.find(function(r){return r.f===g.f&&r.date===today;})){recent.unshift({f:g.f,name:g.name,date:today});if(recent.length>50)recent.pop();localStorage.setItem('recentGames',JSON.stringify(recent));state.gamesPlayed=(state.gamesPlayed||0)+1;}window._gameStartTime=Date.now();updateQuests();saveState();}
 function closeGame(){var fr=document.getElementById('gameFrame');if(fr)fr.src='about:blank';document.getElementById('gameOverlay').style.display='none';if(window._gameStartTime){var mins=Math.floor((Date.now()-window._gameStartTime)/60000);if(mins>0){var today=new Date().toDateString();var key='playtime_'+state.user+'_'+today;var old=parseInt(localStorage.getItem(key)||'0');localStorage.setItem(key,old+mins);updateQuests();}window._gameStartTime=null;}}
 function goFullscreen(){
   var fr=document.getElementById("gameFrame");
@@ -1314,5 +1346,18 @@ function applyLang(){
 }
 // =================== END i18n ===================
 </script>
+
+<!-- BROWSER OVERLAY -->
+<div class="browserOverlay" id="browserOverlay" onclick="if(event.target===this)closeBrowser()">
+  <div class="browserWin" id="browserWin">
+    <div class="browserBar">
+      <button onclick="closeBrowser()" title="Close">✕</button>
+      <h3 id="browserTitle">🌐 Browser</h3>
+      <button onclick="document.getElementById('browserFrame').src=document.getElementById('browserFrame').src" title="Reload">🔄</button>
+      <button onclick="toggleBrowserFull()" id="bFullBtn" title="Fullscreen">⛶</button>
+    </div>
+    <iframe class="browserFrame" id="browserFrame" src="" allow="microphone;camera;fullscreen" allowfullscreen></iframe>
+  </div>
+</div>
 </body>
 </html>
