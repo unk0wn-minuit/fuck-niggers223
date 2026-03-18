@@ -212,6 +212,55 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
 [data-theme="light"] .bg-orb{opacity:.4;}
 [data-theme="light"] .gameCard{background:rgba(255,255,255,.85);}
 [data-theme="light"] .formGroup input,[data-theme="light"] .sugForm input,[data-theme="light"] .sugForm textarea{background:rgba(123,44,255,.07);}[data-theme="light"] .main{background:transparent;}[data-theme="light"] .gamesGrid .gameCard{background:rgba(255,255,255,.92);border-color:rgba(123,44,255,.18);}[data-theme="light"] .gameCard:hover{background:#fff;box-shadow:0 8px 24px rgba(123,44,255,.18);}[data-theme="light"] .gameCard .gameTitle{color:var(--w);}[data-theme="light"] .sidePanel,.sideSection{background:transparent;}[data-theme="light"] .panelOverlay .panelWin{background:rgba(252,250,255,.99);}[data-theme="light"] .profile-card{background:rgba(123,44,255,.04);}[data-theme="light"] .updates-card{background:rgba(255,255,255,.75);}[data-theme="light"] .loader-box{border-color:rgba(123,44,255,.2);}[data-theme="light"] .cookieBanner{border-top-color:rgba(123,44,255,.25);}[data-theme="light"] .gameQuestWidget{box-shadow:0 4px 24px rgba(123,44,255,.15);}[data-theme="light"] .browserWin{box-shadow:0 30px 80px rgba(100,50,200,.2);}[data-theme="light"] .formInput{background:rgba(123,44,255,.07);color:var(--w);border-color:rgba(123,44,255,.25);}[data-theme="light"] .questCard{background:rgba(123,44,255,.06);}[data-theme="light"] .favItem{background:rgba(123,44,255,.08);}[data-theme="light"] .shopItem{background:rgba(255,255,255,.85);}[data-theme="light"] .profile-card{background:rgba(255,255,255,.7);}[data-theme="light"] .filterBtn{background:rgba(255,255,255,.7);border-color:rgba(123,44,255,.2);color:var(--m);}[data-theme="light"] .filterBtn.active{background:var(--p0);color:#fff;}[data-theme="light"] .searchWrap input{background:rgba(255,255,255,.85);color:var(--w);border-color:rgba(123,44,255,.25);}[data-theme="light"] .hero p,[data-theme="light"] .hero .sub-hero{color:var(--m);}[data-theme="light"] .loadMoreBtn{background:rgba(255,255,255,.85);color:var(--m);border-color:rgba(123,44,255,.2);}
+
+/* ---- INVENTORY ---- */
+.inv-section-title{font-size:10px;color:var(--d);font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin:12px 0 6px;}
+.inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:4px;}
+.inv-item{background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;position:relative;}
+.inv-item.equipped{border-color:var(--p0);background:rgba(123,44,255,.12);}
+.inv-item-emoji{font-size:22px;margin-bottom:4px;}
+.inv-item-name{font-size:11px;font-weight:700;color:var(--w);margin-bottom:6px;line-height:1.2;}
+.inv-equip-btn{font-size:10px;padding:4px 10px;border-radius:20px;border:1px solid var(--p0);background:rgba(123,44,255,.2);color:var(--p1);cursor:pointer;font-weight:700;width:100%;}
+.inv-equip-btn.active{background:var(--p0);color:#fff;border-color:var(--p0);}
+.inv-equipped-badge{position:absolute;top:5px;right:5px;font-size:9px;background:var(--p0);color:#fff;padding:1px 5px;border-radius:10px;font-weight:700;}
+
+/* ---- DISCORD PROFILE CARD ---- */
+.viewProfileOverlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:3000;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.viewProfileOverlay.open{display:flex;}
+.profileCard{width:340px;max-width:95vw;border-radius:20px;overflow:hidden;background:var(--bg1);border:1px solid var(--line);box-shadow:0 24px 80px rgba(0,0,0,.7);animation:panelIn .2s ease;}
+.pc-banner{height:90px;position:relative;flex-shrink:0;}
+.pc-banner-default{background:linear-gradient(135deg,var(--p2),var(--p0));}
+.pc-avatar-wrap{position:absolute;bottom:-34px;left:18px;}
+.pc-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;border:4px solid var(--bg1);background:var(--glass);display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:700;color:#fff;}
+.pc-close{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.4);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;line-height:1;}
+.pc-body{padding:44px 18px 18px;}
+.pc-name-row{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-bottom:4px;}
+.pc-username{font-size:20px;font-weight:900;color:var(--w);letter-spacing:-.01em;}
+.pc-level{font-size:12px;color:var(--d);margin-bottom:10px;}
+.pc-badges{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
+.pc-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;padding:2px 8px;border-radius:12px;font-weight:700;}
+.pc-divider{height:1px;background:var(--line);margin:10px 0;}
+.pc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
+.pc-stat{text-align:center;background:var(--glass);border-radius:10px;padding:8px 4px;}
+.pc-stat span{display:block;font-size:16px;font-weight:900;color:var(--p1);}
+.pc-stat small{font-size:10px;color:var(--d);}
+.pc-actions{display:flex;gap:8px;}
+.pc-actions button{flex:1;padding:9px;border-radius:12px;border:none;font-size:13px;font-weight:700;cursor:pointer;}
+
+/* ---- FRAME EFFECTS (applied to avatar border) ---- */
+.frame-gold{box-shadow:0 0 0 3px #ffd700,0 0 16px #ffd70088 !important;}
+.frame-neon{box-shadow:0 0 0 3px #00ffcc,0 0 16px #00ffcc !important;}
+.frame-galaxy{box-shadow:0 0 0 3px #b56cff,0 0 8px #7b2cff,0 0 24px #7b2cff88 !important;}
+.frame-fire{box-shadow:0 0 0 3px #ff6b00,0 0 16px #ff450088,0 0 32px #ff000044 !important;}
+.frame-frost{box-shadow:0 0 0 3px #7ec8ff,0 0 16px #7ec8ff88 !important;}
+.frame-crystal{box-shadow:0 0 0 3px #c8a0ff,0 0 16px #9b4dff88,0 0 28px #c8a0ff44 !important;}
+
+/* ---- NAME EFFECTS ---- */
+.name-neon{color:#00ffcc !important;text-shadow:0 0 8px #00ffcc,0 0 18px #00ffcc;}
+.name-gold{background:linear-gradient(135deg,#ffd700,#ff8c00) !important;-webkit-background-clip:text !important;-webkit-text-fill-color:transparent !important;background-clip:text !important;}
+.name-galaxy{background:linear-gradient(135deg,#7b2cff,#b56cff,#00e5ff) !important;-webkit-background-clip:text !important;-webkit-text-fill-color:transparent !important;background-clip:text !important;}
+.name-rainbow{background:linear-gradient(90deg,#ff0080,#ff8c00,#ffd700,#00ff00,#00e5ff,#7b2cff) !important;-webkit-background-clip:text !important;-webkit-text-fill-color:transparent !important;background-clip:text !important;background-size:200% !important;}
+
 /* Cursor pulse ring */
 .cookieBanner{position:fixed;bottom:0;left:0;right:0;z-index:88888;background:var(--bg1);border-top:1px solid var(--line);padding:14px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;backdrop-filter:blur(20px);transform:translateY(0);transition:transform .3s ease;}.cookieBanner.hidden{transform:translateY(100%);pointer-events:none;}.cookieBanner p{flex:1;font-size:13px;color:var(--m);min-width:200px;}.cookieBanner .cookieBtns{display:flex;gap:8px;flex-shrink:0;}.changelog-entry{border-left:3px solid var(--p1);padding-left:16px;margin-bottom:18px;}.changelog-version{font-size:18px;font-weight:900;color:var(--w);}.changelog-tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;}.changelog-title{font-size:13px;font-weight:700;color:var(--w);margin-bottom:6px;}.changelog-item{font-size:12px;color:var(--d);padding:2px 0;display:flex;gap:6px;}.cursor-ring{position:fixed;width:28px;height:28px;border:2px solid rgba(123,44,255,.5);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .15s,height .15s,opacity .2s;opacity:0;}
 .cursor-ring.visible{opacity:1;}
@@ -337,6 +386,7 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
     <button class="sideNavBtn" data-tab="discord" onclick="openDiscord()"><span class="sideNavIcon">🟣</span><span class="sideNavLabel">Discord</span></button>
     <button class="sideNavBtn" onclick="openBrowser('browser')"><span class="sideNavIcon">🌐</span><span class="sideNavLabel">Browser</span></button>
     <button class="sideNavBtn" onclick="openBrowser('ai')"><span class="sideNavIcon">🤖</span><span class="sideNavLabel">Jakob AI</span></button>
+    <button class="sideNavBtn" data-tab="inventory" onclick="switchSideTab('inventory')"><span class="sideNavIcon">🎒</span><span class="sideNavLabel">Inventarium</span></button>
     <button class="sideNavBtn" data-tab="updates" onclick="openUpdatesPage()"><span class="sideNavIcon">📢</span><span class="sideNavLabel">Updates</span></button>
     <button class="sideNavBtn" id="adminNav" data-tab="admin" onclick="openPanelOverlay('admin')" style="display:none"><span class="sideNavIcon">🛡</span><span class="sideNavLabel" data-i18n="nav_admin">Admin</span></button>
   </nav>
@@ -355,6 +405,7 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
     </div>
     <div class="sidePanel" id="panel_quests"></div>
     <div class="sidePanel" id="panel_butik"></div>
+    <div class="sidePanel" id="panel_inventory"></div>
     <div class="sidePanel" id="panel_updates"></div>
     <div class="sidePanel" id="panel_instaellningar"></div>
     <div class="sidePanel" id="panel_admin"></div>
@@ -371,6 +422,10 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
     <div style="width:100px"></div>
   </div>
   <div class="updatesContent"><div class="updatesInner" id="updatesPageBody"></div></div>
+</div>
+
+<div class="viewProfileOverlay" id="viewProfileOverlay" onclick="if(event.target===this)closeViewProfile()">
+  <div class="profileCard" id="profileCard"></div>
 </div>
 
 <div class="gameOverlay" id="gameOverlay">
@@ -988,7 +1043,7 @@ function switchSideTab(tab){
   var panel=document.getElementById("panel_"+tab);
   if(panel){panel.classList.add("active");
     panel.style.animation="none";panel.offsetHeight;panel.style.animation="panelIn .25s ease";
-    var renders={favoriter:renderFavsPanel,teman:renderThemePanel,quests:renderQuestsPanel,butik:renderShopPanel,instaellningar:renderSettingsPanel,profil:renderProfilePanel,admin:renderAdminPanel,updates:renderUpdatesPanel};
+    var renders={favoriter:renderFavsPanel,teman:renderThemePanel,quests:renderQuestsPanel,butik:renderShopPanel,instaellningar:renderSettingsPanel,profil:renderProfilePanel,admin:renderAdminPanel,updates:renderUpdatesPanel,inventory:renderInventoryPanel};
     if(renders[tab])renders[tab]();
   }
 }
@@ -1306,7 +1361,37 @@ function renderSettingsPanel(){
     sec2.appendChild(lb);el.appendChild(sec2);
   }
 }
-function renderProfilePanel(){var el=document.getElementById('panel_profil');if(!el)return;var av=localStorage.getItem('avatar_'+state.user)||'';var coins=state.coins,favs=state.favorites.length,played=(JSON.parse(localStorage.getItem('recentGames')||'[]')).length;el.innerHTML='<div style="text-align:center;padding:16px 0 8px"><div style="position:relative;display:inline-block;cursor:pointer" onclick="document.getElementById(\'picFileInput\').click()">'+(av?'<img src="'+av+'" style="width:72px;height:72px;border-radius:50%;object-fit:cover;border:3px solid var(--p1)">':'<div style="width:72px;height:72px;border-radius:50%;background:var(--glass);border:3px solid var(--p1);display:flex;align-items:center;justify-content:center;font-size:28px">👤</div>')+'<div style="position:absolute;bottom:0;right:0;width:22px;height:22px;border-radius:50%;background:var(--p0);display:flex;align-items:center;justify-content:center;font-size:12px;border:2px solid var(--bg0)">📷</div></div><input type="file" id="picFileInput" accept="image/*" style="display:none" onchange="handleAvatarUpload(this)"><div style="font-weight:700;font-size:16px;margin-top:8px;color:var(--w)">'+state.user+'</div><div style="font-size:12px;color:var(--d)">Nivå '+state.level+'</div></div><div style="display:flex;gap:8px;margin:8px 0"><div class="statBox"><span>'+coins+'</span><small>Mynt</small></div><div class="statBox"><span>'+favs+'</span><small>Favoriter</small></div><div class="statBox"><span>'+played+'</span><small>Spel</small></div></div><p style="font-size:11px;color:var(--d);text-align:center;margin-top:4px">Klicka på bilden för att ladda upp</p>';}
+function renderProfilePanel(){
+  var el=document.getElementById('panel_profil');if(!el)return;
+  if(!state.user){el.innerHTML="<p style='color:var(--d);padding:20px;text-align:center'>Logga in för att se din profil</p>";return;}
+  var av=localStorage.getItem('avatar_'+state.user)||'';
+  var eq=getEquipped();
+  var frameClass=getFrameClass(eq.frame||null);
+  var nameClass=getNameClass(eq.nameeffect||null);
+  var badgesHTML=eq.badge?getBadgeHTML(eq.badge):'';
+  var coins=state.coins,favs=state.favorites.length,played=state.gamesPlayed||0;
+  var friends=JSON.parse(localStorage.getItem('friends_'+state.user)||'[]');
+  var avatarHTML=av
+    ?'<img src="'+av+'" style="width:80px;height:80px;border-radius:50%;object-fit:cover;" class="'+frameClass+'">'
+    :'<div style="width:80px;height:80px;border-radius:50%;background:var(--p0);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:700;color:#fff" class="'+frameClass+'">👤</div>';
+  el.innerHTML=''
+    +'<div style="background:linear-gradient(135deg,var(--p2),var(--p0));height:70px;border-radius:12px 12px 0 0;margin-bottom:44px;position:relative">'
+    +'<div style="position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);cursor:pointer" onclick="document.getElementById(\'picFileInput\').click()">'
+    +avatarHTML
+    +'<div style="position:absolute;bottom:0;right:0;width:22px;height:22px;border-radius:50%;background:var(--p0);display:flex;align-items:center;justify-content:center;font-size:11px;border:2px solid var(--bg0)">📷</div></div></div>'
+    +'<input type="file" id="picFileInput" accept="image/*" style="display:none" onchange="handleAvatarUpload(this)">'
+    +'<div style="text-align:center;padding:0 12px 10px">'
+    +'<div style="font-size:18px;font-weight:900;margin-bottom:2px" class="'+nameClass+'">'+state.user+'</div>'
+    +(badgesHTML?'<div style="display:flex;justify-content:center;flex-wrap:wrap;gap:4px;margin:4px 0">'+badgesHTML+'</div>':'')
+    +'<div style="font-size:12px;color:var(--d)">Nivå '+state.level+' · '+state.xp+' XP</div></div>'
+    +'<div style="display:flex;gap:8px;margin:8px 12px"><div class="statBox"><span>'+coins+'</span><small>Mynt</small></div>'
+    +'<div class="statBox"><span>'+favs+'</span><small>Favoriter</small></div>'
+    +'<div class="statBox"><span>'+friends.length+'</span><small>Vänner</small></div></div>'
+    +'<div style="padding:0 12px 4px"><p style="font-size:10px;color:var(--d);text-align:center">Klicka på bilden för att ändra</p>'
+    +'<button class="pill ghost" style="width:100%;justify-content:center;margin-top:8px" onclick="switchSideTab(\'inventory\')">🎒 Öppna Inventarium</button>'
+    +'<button class="pill ghost" style="width:100%;justify-content:center;margin-top:6px" onclick="doLogout()">🔑 Logga ut</button></div>';
+}
+
 function renderAdminPanel(){var el=document.getElementById('adminOverlayBody');if(!el)return;var users=getAllUsers();var totalMsgs=JSON.parse(localStorage.getItem('globalChat')||'[]').length;var bannedList=JSON.parse(localStorage.getItem('bannedUsers')||'[]');var announcements=JSON.parse(localStorage.getItem('admin_announcements')||'[]');el.innerHTML='<div style="padding:8px 0"><div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px"><div style="font-size:11px;color:var(--d);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">📊 Statistik</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:8px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--p1)">'+users.length+'</div><div style="font-size:10px;color:var(--d)">Användare</div></div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:8px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--p1)">'+totalMsgs+'</div><div style="font-size:10px;color:var(--d)">Chattmeddelanden</div></div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:8px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--p1)">'+bannedList.length+'</div><div style="font-size:10px;color:var(--d)">Bannade</div></div><div style="background:rgba(255,255,255,.05);border-radius:8px;padding:8px;text-align:center"><div style="font-size:20px;font-weight:700;color:var(--p1)">'+GAMES.length+'</div><div style="font-size:10px;color:var(--d)">Spel</div></div></div></div><div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px"><div style="font-size:11px;color:var(--d);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">📢 Broadcast</div><textarea id="adminBroadcastMsg" data-i18n-ph="chatPlaceholder" placeholder="Write a message..." style="width:100%;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:8px;padding:8px;color:var(--w);font-size:12px;font-family:inherit;resize:vertical;min-height:60px;box-sizing:border-box"></textarea><button onclick="adminBroadcast()" style="width:100%;margin-top:6px;background:var(--p0);color:#fff;border:none;border-radius:8px;padding:8px;cursor:pointer;font-size:12px;font-weight:600">📤 Skicka</button></div><div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px"><div style="font-size:11px;color:var(--d);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">📌 Tillkännagivanden</div><div style="display:flex;gap:6px;margin-bottom:8px"><input id="adminAnnounceInput" placeholder="Nytt tillkännagivande..." style="flex:1;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:8px;padding:7px;color:var(--w);font-size:12px"><button onclick="addAnnouncement()" style="background:var(--p0);color:#fff;border:none;border-radius:8px;padding:7px 10px;cursor:pointer;font-size:12px">+</button></div>'+(announcements.length?announcements.map(function(a,i){return'<div style="background:rgba(255,255,255,.05);border-radius:6px;padding:6px 8px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--m)"><span>'+a+'</span><button onclick="removeAnnouncement('+i+')" style="background:rgba(255,50,50,.2);color:#ff6b6b;border:none;border-radius:4px;padding:2px 6px;cursor:pointer;font-size:10px">✕</button></div>';}).join(''):'<div style="font-size:11px;color:var(--d);text-align:center;padding:8px">Inga tillkännagivanden</div>')+'</div><div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px"><div style="font-size:11px;color:var(--d);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">💰 Ge mynt</div><div style="display:flex;gap:6px;margin-bottom:6px"><input id="adminCoinUser" placeholder="Användarnamn" style="flex:1;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:8px;padding:7px;color:var(--w);font-size:12px"><input id="adminCoinAmount" type="number" placeholder="Antal" min="1" max="9999" style="width:70px;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:8px;padding:7px;color:var(--w);font-size:12px"></div><button onclick="adminGiveCoins()" style="width:100%;background:linear-gradient(135deg,#ffaa00,#ff6b00);color:#000;border:none;border-radius:8px;padding:8px;cursor:pointer;font-size:12px;font-weight:600">🪙 Ge mynt</button></div><div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px"><div style="font-size:11px;color:var(--d);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">👥 Användare ('+users.length+')</div><div style="max-height:200px;overflow-y:auto">'+users.map(function(u){var isBanned=bannedList.indexOf(u)>=0;var uData=JSON.parse(localStorage.getItem('jspel_'+u)||'{}');return'<div style="display:flex;align-items:center;gap:8px;padding:6px;border-radius:8px;background:rgba(255,255,255,.03);margin-bottom:4px"><div style="width:28px;height:28px;border-radius:50%;background:var(--p0);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex-shrink:0;color:#fff">'+u.charAt(0).toUpperCase()+'</div><div style="flex:1;min-width:0"><div style="font-size:12px;font-weight:600;color:var(--w);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+u+'</div><div style="font-size:10px;color:var(--d)">Mynt: '+(uData.coins||0)+' | Nivå: '+(uData.level||1)+'</div></div>'+(isBanned?'<button onclick="adminUnban(\'+u+\')" style="background:rgba(0,200,100,.2);color:#00c864;border:none;border-radius:6px;padding:3px 7px;cursor:pointer;font-size:10px">Avbanna</button>':'<button onclick="adminKick(\'+u+\')" style="background:rgba(255,150,0,.15);color:#ff9600;border:none;border-radius:6px;padding:3px 7px;cursor:pointer;font-size:10px;margin-right:4px">Kicka</button><button onclick="adminBan(\'+u+\')" style="background:rgba(255,50,50,.15);color:#ff4040;border:none;border-radius:6px;padding:3px 7px;cursor:pointer;font-size:10px">Banna</button>')+'</div>';}).join('')+'</div></div>'+
 '<div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px"><div style="font-size:11px;color:var(--d);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">🛡️ Admin-rättigheter</div><div style="display:flex;gap:6px;margin-bottom:6px"><input id="adminRoleUser" placeholder="Användarnamn" style="flex:1;background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:8px;padding:7px;color:var(--w);font-size:12px"><button onclick="var u=document.getElementById(\'adminRoleUser\').value.trim();if(u)adminToggleAdmin(u);" style="background:linear-gradient(135deg,var(--p0),var(--p2));color:#fff;border:none;border-radius:8px;padding:7px 12px;cursor:pointer;font-size:12px;font-weight:600">Ge / Ta admin</button></div><div style="font-size:10px;color:var(--d)">Nuvarande admins: '+getAdminList().join(", ")+'</div></div>'+
 '<div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px"><div style="font-size:11px;color:var(--d);margin-bottom:8px;font-weight:700;text-transform:uppercase;letter-spacing:.5px">🗑️ Rensa chatt</div><button onclick="adminClearChat()" style="width:100%;background:rgba(255,50,50,.2);color:#ff6b6b;border:1px solid rgba(255,50,50,.3);border-radius:8px;padding:8px;cursor:pointer;font-size:12px;font-weight:600">🗑️ Rensa all chatt</button></div></div>';}
@@ -1436,7 +1521,7 @@ function doLogout(){
 }
 function openChat(){document.getElementById("chatOverlay").classList.add("open");closeSidebar();loadChatMsgs();}
 function closeChat(){document.getElementById("chatOverlay").classList.remove("open");}
-function _renderChatMsgs(msgs){var el=document.getElementById('chatMessages');if(!el)return;el.innerHTML=msgs.map(function(m){var isMe=m.user===state.user;var av=localStorage.getItem('avatar_'+m.user)||'';var avatarHtml=av?'<img src="'+av+'" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--p1)">':'<div style="width:28px;height:28px;border-radius:50%;background:var(--p0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;color:#fff">'+m.user.charAt(0).toUpperCase()+'</div>';var time=m.ts?new Date(m.ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'';var isAdmin=m.isAdmin||m.user==='[ADMIN]';return'<div style="display:flex;align-items:flex-end;gap:6px;margin:6px 0;'+(isMe?'flex-direction:row-reverse':'')+'">'+ avatarHtml+'<div style="max-width:70%">'+(isMe||isAdmin?'':'<div style="font-size:10px;color:var(--d);margin-bottom:2px;padding-left:4px;cursor:pointer" onclick="viewProfile(\'' + m.user + '\')">'+m.user+'</div>')+'<div style="background:'+(isAdmin?'rgba(255,80,0,.25)':isMe?'var(--p0)':'var(--glass2)')+';color:var(--w);padding:7px 11px;border-radius:'+(isMe?'14px 14px 4px 14px':'14px 14px 14px 4px')+';font-size:13px;word-break:break-word">'+m.text+'</div><div style="font-size:10px;color:var(--d);margin-top:2px;text-align:'+(isMe?'right':'left')+'">'+time+'</div></div></div>';}).join('');el.scrollTop=el.scrollHeight;}
+function _renderChatMsgs(msgs){var el=document.getElementById('chatMessages');if(!el)return;el.innerHTML=msgs.map(function(m){var isMe=m.user===state.user;var av=localStorage.getItem('avatar_'+m.user)||'';var avatarHtml=av?'<img src="'+av+'" onclick="viewProfile(this.dataset.u)" data-u="'+m.user+'" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--p1);cursor:pointer">':'<div onclick="viewProfile(this.dataset.u)" data-u="'+m.user+'" style="width:28px;height:28px;border-radius:50%;background:var(--p0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;color:#fff;cursor:pointer">'+m.user.charAt(0).toUpperCase()+'</div>';var time=m.ts?new Date(m.ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'';var isAdmin=m.isAdmin||m.user==='[ADMIN]';return'<div style="display:flex;align-items:flex-end;gap:6px;margin:6px 0;'+(isMe?'flex-direction:row-reverse':'')+'">'+ avatarHtml+'<div style="max-width:70%">'+(isMe||isAdmin?'':'<div style="font-size:10px;color:var(--d);margin-bottom:2px;padding-left:4px;cursor:pointer" onclick="viewProfile(\'' + m.user + '\')">'+m.user+'</div>')+'<div style="background:'+(isAdmin?'rgba(255,80,0,.25)':isMe?'var(--p0)':'var(--glass2)')+';color:var(--w);padding:7px 11px;border-radius:'+(isMe?'14px 14px 4px 14px':'14px 14px 14px 4px')+';font-size:13px;word-break:break-word">'+m.text+'</div><div style="font-size:10px;color:var(--d);margin-top:2px;text-align:'+(isMe?'right':'left')+'">'+time+'</div></div></div>';}).join('');el.scrollTop=el.scrollHeight;}
 function loadChatMsgs(){
   if(_sb){
     _sb.from("chat_messages").select("*").order("timestamp",{ascending:true}).limit(200)
@@ -1447,7 +1532,7 @@ function loadChatMsgs(){
       });
     return;
   }
-  var msgs=JSON.parse(localStorage.getItem('globalChat')||'[]');var el=document.getElementById('chatMessages');if(!el)return;el.innerHTML=msgs.map(function(m){var isMe=m.user===state.user;var av=localStorage.getItem('avatar_'+m.user)||'';var avatarHtml=av?'<img src="'+av+'" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--p1)">':'<div style="width:28px;height:28px;border-radius:50%;background:var(--p0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;color:#fff">'+m.user.charAt(0).toUpperCase()+'</div>';var time=m.ts?new Date(m.ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'';var isAdmin=m.isAdmin||m.user==='[ADMIN]';return'<div style="display:flex;align-items:flex-end;gap:6px;margin:6px 0;'+(isMe?'flex-direction:row-reverse':'')+'">'+ avatarHtml+'<div style="max-width:70%">'+(isMe||isAdmin?'':'<div style="font-size:10px;color:var(--d);margin-bottom:2px;padding-left:4px;cursor:pointer" onclick="viewProfile(\'' + m.user + '\')">'+m.user+'</div>')+'<div style="background:'+(isAdmin?'rgba(255,80,0,.25)':isMe?'var(--p0)':'var(--glass2)')+';color:var(--w);padding:7px 11px;border-radius:'+(isMe?'14px 14px 4px 14px':'14px 14px 14px 4px')+';font-size:13px;word-break:break-word">'+m.text+'</div><div style="font-size:10px;color:var(--d);margin-top:2px;text-align:'+(isMe?'right':'left')+'">'+time+'</div></div></div>';}).join('');el.scrollTop=el.scrollHeight;}
+  var msgs=JSON.parse(localStorage.getItem('globalChat')||'[]');var el=document.getElementById('chatMessages');if(!el)return;el.innerHTML=msgs.map(function(m){var isMe=m.user===state.user;var av=localStorage.getItem('avatar_'+m.user)||'';var avatarHtml=av?'<img src="'+av+'" onclick="viewProfile(this.dataset.u)" data-u="'+m.user+'" style="width:28px;height:28px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--p1);cursor:pointer">':'<div onclick="viewProfile(this.dataset.u)" data-u="'+m.user+'" style="width:28px;height:28px;border-radius:50%;background:var(--p0);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;color:#fff;cursor:pointer">'+m.user.charAt(0).toUpperCase()+'</div>';var time=m.ts?new Date(m.ts).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}):'';var isAdmin=m.isAdmin||m.user==='[ADMIN]';return'<div style="display:flex;align-items:flex-end;gap:6px;margin:6px 0;'+(isMe?'flex-direction:row-reverse':'')+'">'+ avatarHtml+'<div style="max-width:70%">'+(isMe||isAdmin?'':'<div style="font-size:10px;color:var(--d);margin-bottom:2px;padding-left:4px;cursor:pointer" onclick="viewProfile(\'' + m.user + '\')">'+m.user+'</div>')+'<div style="background:'+(isAdmin?'rgba(255,80,0,.25)':isMe?'var(--p0)':'var(--glass2)')+';color:var(--w);padding:7px 11px;border-radius:'+(isMe?'14px 14px 4px 14px':'14px 14px 14px 4px')+';font-size:13px;word-break:break-word">'+m.text+'</div><div style="font-size:10px;color:var(--d);margin-top:2px;text-align:'+(isMe?'right':'left')+'">'+time+'</div></div></div>';}).join('');el.scrollTop=el.scrollHeight;}
 function sendChat(){
   if(!state.user){toast("Logga in för att chatta");return;}
   var _cd=new Date().toDateString();var _ck='chatSent_'+state.user+'_'+_cd;
@@ -1499,6 +1584,179 @@ function removeAnnouncement(i){var ann=JSON.parse(localStorage.getItem('admin_an
 function handleAvatarUpload(input){if(!input.files||!input.files[0])return;var file=input.files[0];if(!file.type.startsWith('image/')){toast('Bara bildfiler är tillåtna','error');return;}if(file.size>2097152){toast('Bilden är för stor (max 2MB)','error');return;}var reader=new FileReader();reader.onload=function(e){var b64=e.target.result;localStorage.setItem('avatar_'+state.user,b64);var ud=document.getElementById('userAvatarDisplay');if(ud)ud.src=b64;toast('Profilbild uppdaterad!','ok');renderProfilePanel();};reader.readAsDataURL(file);}
 function claimQuest(id){var today=new Date().toDateString();var key='quests_'+state.user+'_'+today;var saved=JSON.parse(localStorage.getItem(key)||'{"claimed":[]}');if(!saved.claimed)saved.claimed=[];if(saved.claimed.indexOf(id)>=0)return toast('Quest redan hämtad!','error');var quests=getQuests();var q=quests.find(function(q){return q.id===id;});if(!q||!q.done)return toast('Quest ej klar!','error');saved.claimed.push(id);localStorage.setItem(key,JSON.stringify(saved));addCoins(q.reward);toast('+'+q.reward+' mynt! Quest klar!','ok');renderQuestsPanel();}
 function applyTheme(name){var themes={purple:{"--p0":"#7b2cff","--p1":"#b56cff","--p2":"#3a00b7","--bg0":"#050008","--bg1":"#0b0014","--bg2":"#120022"},neon:{"--p0":"#00ffcc","--p1":"#00e5ff","--p2":"#007a5e","--bg0":"#000a08","--bg1":"#00150f","--bg2":"#001a10"},gold:{"--p0":"#ffaa00","--p1":"#ffd166","--p2":"#a06800","--bg0":"#0a0600","--bg1":"#130900","--bg2":"#1a0d00"},red:{"--p0":"#ff2d55","--p1":"#ff6b6b","--p2":"#8b0000","--bg0":"#080003","--bg1":"#100008","--bg2":"#160005"},blue:{"--p0":"#2979ff","--p1":"#82b1ff","--p2":"#0040ca","--bg0":"#000510","--bg1":"#000a1f","--bg2":"#000e2b"},pink:{"--p0":"#e91e8c","--p1":"#ff80c8","--p2":"#9c006a","--bg0":"#08000a","--bg1":"#120010","--bg2":"#180015"}};var t=themes[name]||themes.purple;var r=document.documentElement;var isLight=state&&state.settings&&state.settings.darkMode===false;Object.keys(t).forEach(function(k){if(isLight&&(k==="--bg0"||k==="--bg1"||k==="--bg2"))return;r.style.setProperty(k,t[k]);});if(isLight)Object.keys(_LIGHT_BG).forEach(function(k){r.style.setProperty(k,_LIGHT_BG[k]);});var p0=t['--p0'];document.querySelectorAll('[class*="bg-orb"]').forEach(function(el,i){if(i===0)el.style.background='radial-gradient(circle,'+p0+'44,transparent 70%)';else if(i===1)el.style.background='radial-gradient(circle,'+p0+'33,transparent 70%)';else el.style.background='radial-gradient(circle,'+p0+'22,transparent 70%)';});document.querySelectorAll('.bg-grid').forEach(function(el){el.style.backgroundImage='linear-gradient('+p0+'18 1px,transparent 1px),linear-gradient(90deg,'+p0+'18 1px,transparent 1px)';});state.settings.theme=name;localStorage.setItem('jspel_'+state.user,JSON.stringify({coins:state.coins,xp:state.xp,level:state.level,favorites:state.favorites,gamesPlayed:state.gamesPlayed,settings:state.settings}));}
+
+/* ---- COSMETIC HELPERS ---- */
+var SHOP_ITEMS_DATA={
+  frame_gold:{e:"🟡",n:"Guld Ram",type:"frame"},frame_neon:{e:"🟢",n:"Neon Ram",type:"frame"},
+  frame_galaxy:{e:"🌌",n:"Galaxy Ram",type:"frame"},frame_fire:{e:"🔥",n:"Fire Ram",type:"frame"},
+  frame_frost:{e:"❄️",n:"Frost Ram",type:"frame"},frame_crystal:{e:"💎",n:"Crystal Ram",type:"frame"},
+  badge_pro:{e:"⭐",n:"Pro",type:"badge",c:"#ffd700"},badge_vip:{e:"👑",n:"VIP",type:"badge",c:"#9b59b6"},
+  badge_fire:{e:"🔥",n:"Fire",type:"badge",c:"#ff6b00"},badge_crystal:{e:"💎",n:"Crystal",type:"badge",c:"#7ec8ff"},
+  badge_shadow:{e:"🖤",n:"Shadow",type:"badge",c:"#8888aa"},badge_pulse:{e:"💟",n:"Pulse",type:"badge",c:"#e91e8c"},
+  name_neon:{e:"🟢",n:"Neon Namn",type:"nameeffect"},name_gold:{e:"✨",n:"Guld Namn",type:"nameeffect"},
+  name_galaxy:{e:"🌌",n:"Galaxy Namn",type:"nameeffect"},name_rainbow:{e:"🌈",n:"Rainbow Namn",type:"nameeffect"},
+  effect_aura:{e:"🔥",n:"Aura Glow",type:"effect"},effect_wave:{e:"🌊",n:"Wave Overlay",type:"effect"},
+  effect_vortex:{e:"🌀",n:"Vortex",type:"effect"},effect_pulse:{e:"💟",n:"Pulse Effect",type:"effect"},
+  effect_shadow:{e:"🖤",n:"Shadow Card",type:"effect"},effect_galaxy:{e:"🌌",n:"Galaxy Card",type:"effect"}
+};
+function getEquipped(){return state.settings.equipped||{};}
+function getFrameClass(id){if(!id)return "";return "frame-"+id.replace("frame_","");}
+function getNameClass(id){if(!id)return "";return "name-"+id.replace("name_","");}
+function getBannerStyle(id){
+  var m={effect_aura:"background:radial-gradient(ellipse at center,var(--p0)cc,var(--p2))",
+    effect_wave:"background:linear-gradient(135deg,var(--p2),var(--p0) 50%,var(--p1))",
+    effect_vortex:"background:conic-gradient(var(--p2),var(--p0),var(--p1),var(--p2))",
+    effect_pulse:"background:var(--p0);animation:pulse 2s ease infinite",
+    effect_shadow:"background:linear-gradient(135deg,#000 0%,var(--p2) 100%)",
+    effect_galaxy:"background:linear-gradient(135deg,#000508,#0a0020 60%,var(--p2)33)"};
+  return m[id]||"background:linear-gradient(135deg,var(--p2),var(--p0))";
+}
+function getBadgeHTML(id){
+  var b=SHOP_ITEMS_DATA[id];if(!b||b.type!=="badge")return "";
+  return '<span class="pc-badge" style="background:'+b.c+'22;color:'+b.c+';border:1px solid '+b.c+'55">'+b.e+" "+b.n+"</span>";
+}
+function equipItem(id,type){
+  if(!state.settings.equipped)state.settings.equipped={};
+  state.settings.equipped[type]=id;
+  saveState();toast("Equippat! ✨","ok");
+  renderInventoryPanel();updateHUD();
+}
+function unequipItem(type){
+  if(!state.settings.equipped)return;
+  state.settings.equipped[type]=null;
+  saveState();toast("Unequippat","ok");
+  renderInventoryPanel();updateHUD();
+}
+
+/* ---- INVENTORY PANEL ---- */
+function renderInventoryPanel(){
+  var el=document.getElementById("panel_inventory");if(!el)return;
+  if(!state.user){el.innerHTML="<p style='color:var(--d);padding:20px;text-align:center'>Logga in för att se ditt inventarium</p>";return;}
+  var owned=JSON.parse(localStorage.getItem("owned_"+state.user)||"[]");
+  var eq=getEquipped();
+  var cats={frame:"Profil Ramar \U0001F5BC\uFE0F",badge:"Badges \U0001F3F7\uFE0F",nameeffect:"Namn Effekter \u270D\uFE0F",effect:"Profil Effekter \U0001F4AB"};
+  var typeKeys={frame:"frame",badge:"badge",nameeffect:"nameeffect",effect:"effect"};
+  var h='<div style="padding:6px 0">';
+  h+='<div style="background:var(--glass);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px">';
+  h+='<div style="font-size:13px;font-weight:700;margin-bottom:2px;color:var(--w)">\U0001F392 Mitt Inventarium</div>';
+  h+='<div style="font-size:11px;color:var(--d)">'+owned.length+' saker ägda</div></div>';
+  var byType={frame:[],badge:[],nameeffect:[],effect:[]};
+  owned.forEach(function(id){var d=SHOP_ITEMS_DATA[id];if(d&&byType[d.type])byType[d.type].push(id);});
+  Object.keys(cats).forEach(function(type){
+    var items=byType[type];if(!items.length)return;
+    h+='<div class="inv-section-title">'+cats[type]+'</div>';
+    h+='<div class="inv-grid">';
+    items.forEach(function(id){
+      var d=SHOP_ITEMS_DATA[id];if(!d)return;
+      var isEq=eq[type]===id;
+      h+='<div class="inv-item'+(isEq?" equipped":"")+'">';
+      if(isEq)h+='<div class="inv-equipped-badge">EQUIPPAT</div>';
+      h+='<div class="inv-item-emoji">'+d.e+'</div>';
+      h+='<div class="inv-item-name">'+d.n+'</div>';
+      if(isEq){
+        h+='<button class="inv-equip-btn active" data-type="'+type+'" onclick="unequipItem(\''+type+'\')">Unequipa</button>';
+      }else{
+        h+='<button class="inv-equip-btn" data-type="'+type+'" data-id="'+id+'" onclick="equipItem(\''+id+'\',\''+type+'\')">Equippa</button>';
+      }
+      h+='</div>';
+    });
+    h+='</div>';
+  });
+  if(!owned.length)h+='<div style="text-align:center;padding:32px;color:var(--d)"><div style="font-size:40px;margin-bottom:8px">\U0001F4E6</div><div style="font-size:13px">Inget ännu!<br><small>Köp saker i Mynt-butiken</small></div></div>';
+  h+='</div>';
+  el.innerHTML=h;
+}
+
+/* ---- DISCORD-STYLE PROFILE CARD ---- */
+function viewProfile(username){
+  if(!username)return;
+  var ov=document.getElementById("viewProfileOverlay");
+  var card=document.getElementById("profileCard");
+  if(!ov||!card)return;
+  ov.style.display="flex";
+  setTimeout(function(){ov.classList.add("open");},10);
+  _renderProfileCard(card,username);
+}
+function closeViewProfile(){
+  var ov=document.getElementById("viewProfileOverlay");
+  if(ov){ov.classList.remove("open");setTimeout(function(){ov.style.display="none";},200);}
+}
+function _renderProfileCard(card,username){
+  var isSelf=(username===state.user);
+  /* Try to get data from localStorage (works for local profiles) */
+  var uData=JSON.parse(localStorage.getItem("jspel_"+username)||"{}");
+  var eq=(uData.settings&&uData.settings.equipped)||{};
+  var av=localStorage.getItem("avatar_"+username)||"";
+  var level=uData.level||1;
+  var coins=isSelf?state.coins:(uData.coins||0);
+  var favs=isSelf?state.favorites.length:(uData.favorites||[]).length;
+  var friends=JSON.parse(localStorage.getItem("friends_"+username)||"[]");
+  var myFriends=state.user?JSON.parse(localStorage.getItem("friends_"+state.user)||"[]"):[];
+  var isFriend=myFriends.indexOf(username)>=0;
+
+  /* Banner */
+  var bannerStyle=getBannerStyle(eq.effect||null);
+  /* Avatar */
+  var frameClass=getFrameClass(eq.frame||null);
+  var avatarHTML=av
+    ?'<img src="'+av+'" class="pc-avatar '+frameClass+'" style="width:72px;height:72px">'
+    :'<div class="pc-avatar '+frameClass+'" style="background:var(--p0);width:72px;height:72px">'+username.charAt(0).toUpperCase()+'</div>';
+  /* Name effect */
+  var nameClass=getNameClass(eq.nameeffect||null);
+  /* Badges */
+  var badgesHTML="";
+  if(eq.badge)badgesHTML+=getBadgeHTML(eq.badge);
+  /* Actions */
+  var actionsHTML="";
+  if(!isSelf&&state.user){
+    if(isFriend){
+      actionsHTML='<button onclick="removeFriend(\''+username+'\');closeViewProfile();toast(\'Vän borttagen\')" style="background:rgba(255,50,50,.2);color:#ff6b6b;border:1px solid rgba(255,50,50,.3);flex:1;padding:9px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer">\u274C Ta bort vän</button>';
+    }else{
+      actionsHTML='<button onclick="addFriendDirect(\''+username+'\');closeViewProfile();toast(\'+Vän tillagd \u2728\',\'ok\')" style="background:var(--p0);color:#fff;flex:1;padding:9px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer;border:none">+ Lägg till vän</button>';
+    }
+  }
+  if(isSelf){
+    actionsHTML='<button onclick="closeViewProfile();openProfileOverlay()" style="background:var(--glass);color:var(--w);border:1px solid var(--line);flex:1;padding:9px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer">\U0001F4DD Redigera profil</button>';
+  }
+  actionsHTML+='<button onclick="closeViewProfile()" style="background:var(--glass);color:var(--d);border:1px solid var(--line);flex:1;padding:9px;border-radius:12px;font-size:13px;font-weight:700;cursor:pointer">Stäng</button>';
+
+  card.innerHTML=
+    '<div class="pc-banner pc-banner-default" style="'+bannerStyle+'">'
+    +'<div class="pc-avatar-wrap">'+avatarHTML+'</div>'
+    +'<button class="pc-close" onclick="closeViewProfile()">✕</button>'
+    +'</div>'
+    +'<div class="pc-body">'
+    +'<div class="pc-name-row"><span class="pc-username '+nameClass+'">'+username+'</span></div>'
+    +(badgesHTML?'<div class="pc-badges">'+badgesHTML+'</div>':'')
+    +'<div class="pc-level">Nivå '+level+(isSelf?' \u00B7 \U0001F9E9 '+state.xp+' XP':'')+''+'</div>'
+    +'<div class="pc-divider"></div>'
+    +'<div class="pc-stats">'
+    +'<div class="pc-stat"><span>'+coins+'</span><small>\U0001F4B0 Mynt</small></div>'
+    +'<div class="pc-stat"><span>'+favs+'</span><small>\u2B50 Favs</small></div>'
+    +'<div class="pc-stat"><span>'+friends.length+'</span><small>\U0001F465 Vänner</small></div>'
+    +'</div>'
+    +'<div class="pc-divider"></div>'
+    +'<div class="pc-actions">'+actionsHTML+'</div>'
+    +'</div>';
+
+  /* If Supabase available, try to enrich with server data */
+  if(_sb&&!isSelf){
+    _sb.from("accounts").select("username,is_admin").eq("username",username).single().then(function(res){
+      if(res.data&&res.data.is_admin){
+        var nr=card.querySelector(".pc-name-row");
+        if(nr&&!nr.querySelector(".admin-badge")){
+          var ab=document.createElement("span");ab.className="pc-badge admin-badge";
+          ab.style.cssText="background:#ff6b0022;color:#ff6b00;border:1px solid #ff6b0055";
+          ab.textContent="\U0001F6E1\uFE0F Admin";
+          nr.appendChild(ab);
+        }
+      }
+    });
+  }
+}
+
+/* ---- UPDATED PROFILE PANEL (sidebar) ---- */
+
 document.addEventListener("DOMContentLoaded",function(){
   // Show loader immediately on page load
   showLoader("Jakob's Game Library");
