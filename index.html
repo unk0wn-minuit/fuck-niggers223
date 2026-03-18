@@ -440,14 +440,15 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
     <button class="sideNavBtn active" data-tab="favoriter" onclick="openPanelOverlay('fav')"><span class="sideNavIcon">⭐</span><span class="sideNavLabel" data-i18n="nav_favs">Favorites</span></button>
     <button class="sideNavBtn" onclick="openProfileWindow()"><span class="sideNavIcon">👤</span><span class="sideNavLabel" data-i18n="nav_profile">Profile</span></button>
     <button class="sideNavBtn" onclick="openThemesWindow()"><span class="sideNavIcon">🎨</span><span class="sideNavLabel" data-i18n="nav_themes">Themes</span></button>
-    <button class="sideNavBtn" data-tab="forslag" onclick="switchSideTab('forslag')"><span class="sideNavIcon">💡</span><span class="sideNavLabel" data-i18n="nav_suggest">Suggest</span></button>
-    <button class="sideNavBtn" data-tab="quests" onclick="switchSideTab('quests')"><span class="sideNavIcon">📋</span><span class="sideNavLabel">Quests</span></button>
+    <button class="sideNavBtn" onclick="closeSidebar();openPanelOverlay('forslag')"><span class="sideNavIcon">💡</span><span class="sideNavLabel" data-i18n="nav_suggest">Suggest</span></button>
+    <button class="sideNavBtn" onclick="closeSidebar();openPanelOverlay('quests')"><span class="sideNavIcon">📋</span><span class="sideNavLabel">Quests</span></button>
     <button class="sideNavBtn" data-tab="butik" onclick="openPanelOverlay('butik')"><span class="sideNavIcon">🛒</span><span class="sideNavLabel">Mynt-butik</span></button>
-    <button class="sideNavBtn" data-tab="instaellningar" onclick="switchSideTab('instaellningar')"><span class="sideNavIcon">⚙️</span><span class="sideNavLabel" data-i18n="nav_settings">Settings</span></button>
+    <button class="sideNavBtn" onclick="closeSidebar();openPanelOverlay('settings')"><span class="sideNavIcon">⚙️</span><span class="sideNavLabel" data-i18n="nav_settings">Settings</span></button>
     <button class="sideNavBtn" onclick="openSoundboardWindow()"><span class="sideNavIcon">🎵</span><span class="sideNavLabel">Soundboard</span></button>
     <button class="sideNavBtn" onclick="closeSidebar();openChat()"><span class="sideNavIcon">💬</span><span class="sideNavLabel" data-i18n="nav_chat">Chat</span></button>
-    <button class="sideNavBtn" onclick="switchSideTab('leaderboard')"><span class="sideNavIcon">🏆</span><span class="sideNavLabel">Leaderboard</span></button>
-    <button class="sideNavBtn" onclick="switchSideTab('achievements')"><span class="sideNavIcon">🏅</span><span class="sideNavLabel">Achievements</span></button>
+    <button class="sideNavBtn" onclick="closeSidebar();openPanelOverlay('leaderboard')"><span class="sideNavIcon">🏆</span><span class="sideNavLabel">Leaderboard</span></button>
+    <button class="sideNavBtn" onclick="closeSidebar();openPanelOverlay('achievements')"><span class="sideNavIcon">🏅</span><span class="sideNavLabel">Achievements</span></button>
+    <button class="sideNavBtn" onclick="closeSidebar();openPanelOverlay('roadmap')"><span class="sideNavIcon">🗺️</span><span class="sideNavLabel">Roadmap</span></button>
     <button class="sideNavBtn" data-tab="discord" onclick="openDiscord()"><span class="sideNavIcon">🟣</span><span class="sideNavLabel">Discord</span></button>
     <button class="sideNavBtn" onclick="openBrowser('browser')"><span class="sideNavIcon">🌐</span><span class="sideNavLabel">Browser</span></button>
     <button class="sideNavBtn" onclick="openBrowser('ai')"><span class="sideNavIcon">🤖</span><span class="sideNavLabel">Jakob AI</span></button>
@@ -459,15 +460,7 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
     <div class="sidePanel active" id="panel_favoriter"></div>
     <div class="sidePanel" id="panel_profil"></div>
     <div class="sidePanel" id="panel_teman"></div>
-    <div class="sidePanel" id="panel_forslag">
-      <div class="sideSection"><h4>Föreslå ett spel</h4>
-        <div class="sugForm">
-          <input type="text" id="sugGame" placeholder="Spelnamn...">
-          <textarea id="sugText" placeholder="Kommentar (valfritt)..."></textarea>
-          <button class="pill primary" onclick="submitSuggestion()" style="justify-content:center;margin-top:2px">Skicka förslag</button>
-        </div>
-      </div>
-    </div>
+    <div class="sidePanel" id="panel_forslag"></div>
     <div class="sidePanel" id="panel_quests"></div>
     <div class="sidePanel" id="panel_butik"></div>
     <div class="sidePanel" id="panel_inventory"></div>
@@ -614,6 +607,36 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
     <div class="panelBody" id="favOverlayBody"></div>
   </div>
 </div>
+<div class="panelOverlay" id="achievementsOverlay" onclick="if(event.target===this)closePanelOverlay('achievements')">
+  <div class="panelWin">
+    <div class="panelHead"><h3>🏅 Achievements</h3><button class="closeBtn" onclick="closePanelOverlay('achievements')">✕</button></div>
+    <div class="panelBody" id="achievementsOverlayBody"></div>
+  </div>
+</div>
+<div class="panelOverlay" id="leaderboardOverlay" onclick="if(event.target===this)closePanelOverlay('leaderboard')">
+  <div class="panelWin">
+    <div class="panelHead"><h3>🏆 Topplistor</h3><button class="closeBtn" onclick="closePanelOverlay('leaderboard')">✕</button></div>
+    <div class="panelBody" id="leaderboardOverlayBody"></div>
+  </div>
+</div>
+<div class="panelOverlay" id="settingsOverlay" onclick="if(event.target===this)closePanelOverlay('settings')">
+  <div class="panelWin">
+    <div class="panelHead"><h3>⚙️ Inställningar</h3><button class="closeBtn" onclick="closePanelOverlay('settings')">✕</button></div>
+    <div class="panelBody" id="settingsOverlayBody"></div>
+  </div>
+</div>
+<div class="panelOverlay" id="forslagOverlay" onclick="if(event.target===this)closePanelOverlay('forslag')">
+  <div class="panelWin" style="max-width:480px">
+    <div class="panelHead"><h3>💡 Föreslå ett spel</h3><button class="closeBtn" onclick="closePanelOverlay('forslag')">✕</button></div>
+    <div class="panelBody" id="forslagOverlayBody"></div>
+  </div>
+</div>
+<div class="panelOverlay" id="roadmapOverlay" onclick="if(event.target===this)closePanelOverlay('roadmap')">
+  <div class="panelWin" style="max-width:620px">
+    <div class="panelHead"><h3>🗺️ Roadmap</h3><button class="closeBtn" onclick="closePanelOverlay('roadmap')">✕</button></div>
+    <div class="panelBody" id="roadmapOverlayBody"></div>
+  </div>
+</div>
 <div class="panelOverlay" id="questsOverlay" onclick="if(event.target===this)closePanelOverlay('quests')">
   <div class="panelWin">
     <div class="panelHead"><h3>📋 Quests</h3><button class="closeBtn" onclick="closePanelOverlay('quests')">✕</button></div>
@@ -668,7 +691,11 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
       <span class="hintPill" data-i18n="pill_quests">📋 Complete quests</span>
     </div>
   </section>
-  <div class="filterBar">
+  <div style="margin-bottom:4px">
+<div style="font-size:13px;font-weight:700;color:var(--d);margin:0 0 8px">✨ Rekommenderade spel</div>
+<div id="recommendedSection" style="padding:0 0 4px"></div>
+</div>
+<div class="filterBar">
     <button class="filterBtn active" data-filter="alla" data-i18n="allGames">All games</button>
     <button class="filterBtn" data-filter="favoriter" data-i18n="favBtnLabel">⭐ Favorites</button>
   </div>
@@ -833,7 +860,62 @@ function hideLoader(){
 function animatePanel(id){var el=document.getElementById(id);if(el){el.style.animation="none";el.offsetHeight;el.style.animation="panelIn .25s ease";}}
 
 /* ---- PANEL OVERLAY WINDOWS ---- */
-var _overlayRenders={fav:renderFavsPanel,quests:renderQuestsPanel,butik:renderShopPanel,admin:renderAdminPanel,changelog:renderChangelogPanel};
+function renderRoadmapPanel(){
+  var el=document.getElementById('roadmapOverlayBody');if(!el)return;
+  var items=[
+    {s:"done",l:"✅ Klar",c:"#3ba55c",t:"Inline Game View",d:"Spel visas direkt på sidan utan overlay"},
+    {s:"done",l:"✅ Klar",c:"#3ba55c",t:"Profil & Bio System",d:"Bio, status, banner, showcase, pinnade spel, join date"},
+    {s:"done",l:"✅ Klar",c:"#3ba55c",t:"Quests & Achievements",d:"Dagliga quests, milstolpar, achievements-system"},
+    {s:"done",l:"✅ Klar",c:"#3ba55c",t:"Leaderboard & XP",d:"Topplistor baserade på XP och nivå"},
+    {s:"done",l:"✅ Klar",c:"#3ba55c",t:"7 Språk",d:"Svenska, Engelska, Spanska, Franska, Tyska, Ryska, Kinesiska"},
+    {s:"done",l:"✅ Klar",c:"#3ba55c",t:"Draggable Windows",d:"Chat, Profil, Teman, Soundboard som rörliga fönster"},
+    {s:"done",l:"✅ Klar",c:"#3ba55c",t:"Cross-Device Avatarer",d:"Profilbilder och data synkas via Supabase på alla enheter"},
+    {s:"done",l:"✅ Klar",c:"#3ba55c",t:"Rekommenderade Spel",d:"Utvalda spel på startsidan — WorldGuessr, Eaglercraft, SummerRider3D"},
+    {s:"progress",l:"🔨 Pågår",c:"#faa61a",t:"Spel A–Z",d:"Dela upp spelgallerin alfabetiskt för lättare navigering"},
+    {s:"soon",l:"📅 Snart",c:"#7289da",t:"Notifikationer 🔔",d:"Notis när vän är online eller skickar meddelande"},
+    {s:"soon",l:"📅 Snart",c:"#7289da",t:"Clan-system",d:"Skapa och gå med i clans, tävla på leaderboard"},
+    {s:"soon",l:"📅 Snart",c:"#7289da",t:"Spel-recensioner",d:"Skriv detaljerade recensioner och läs andras"},
+    {s:"planned",l:"💡 Planerad",c:"#5865f2",t:"Turneringar 🏆",d:"Organiserade tävlingar med priser och ranglistor"},
+    {s:"planned",l:"💡 Planerad",c:"#5865f2",t:"Profil-musik",d:"Välj bakgrundsmusik som spelas när folk besöker din profil"},
+    {s:"planned",l:"💡 Planerad",c:"#5865f2",t:"Mobilapp",d:"Dedikerad app för iOS och Android"},
+  ];
+  var h='<div style="padding:4px 0">';
+  items.forEach(function(item){
+    h+='<div style="display:flex;gap:12px;align-items:flex-start;padding:11px 14px;border-radius:12px;background:var(--glass);border:1px solid var(--line);margin-bottom:7px">';
+    h+='<span style="background:'+item.c+'22;color:'+item.c+';border:1px solid '+item.c+'55;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0">'+item.l+'</span>';
+    h+='<div><div style="font-weight:700;font-size:14px;color:var(--w);margin-bottom:2px">'+item.t+'</div><div style="font-size:12px;color:var(--d)">'+item.d+'</div></div>';
+    h+='</div>';
+  });
+  h+='<div style="text-align:center;font-size:11px;color:var(--d);margin-top:12px;padding:8px">💬 Har du idéer? Använd Förslag i menyn!</div>';
+  h+='</div>';
+  el.innerHTML=h;
+}
+function renderRecommendedSection(){
+  var el=document.getElementById('recommendedSection');if(!el)return;
+  var featured=[
+    {f:"clworldguessr.html",name:"WorldGuessr",emoji:"🌍",desc:"Gissa länder på Google Street View",color:"#0ea5e9"},
+    {f:"EaglercraftZ_1.11.2.html",name:"Eaglercraft 1.11.2",emoji:"⛰️",desc:"Minecraft i webbläsaren — nyaste versionen",color:"#3ba55c"},
+    {f:"clsummerRider3D.html",name:"Summer Rider 3D",emoji:"🏍️",desc:"Motorcykelracing i 3D",color:"#faa61a"},
+  ];
+  var h='<div style="display:flex;gap:12px;overflow-x:auto;padding:4px 0 8px;scrollbar-width:thin">';
+  featured.forEach(function(g){
+    var locked=false;
+    try{var idx=GAMES.findIndex(function(x){return x.f===g.f;});if(idx>=0)locked=gameIsLocked(idx);}catch(e){}
+    h+='<div onclick="openGameByFile(\''+g.f+'\')" style="flex-shrink:0;width:180px;border-radius:16px;background:linear-gradient(135deg,'+g.color+'22,'+g.color+'08);border:1.5px solid '+g.color+'44;padding:16px 14px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden" onmouseenter="this.style.transform=\'scale(1.03)\';this.style.borderColor=\''+g.color+'\'" onmouseleave="this.style.transform=\'\';this.style.borderColor=\''+g.color+'44\'">';
+    h+='<div style="font-size:32px;margin-bottom:8px">'+g.emoji+'</div>';
+    h+='<div style="font-weight:800;font-size:14px;color:var(--w);margin-bottom:4px">'+g.name+'</div>';
+    h+='<div style="font-size:11px;color:var(--d);line-height:1.4">'+g.desc+'</div>';
+    h+='<div style="margin-top:10px;display:inline-flex;align-items:center;gap:4px;background:'+g.color+';color:#fff;border-radius:20px;padding:4px 10px;font-size:11px;font-weight:700">▶ Spela nu</div>';
+    h+='</div>';
+  });
+  h+='</div>';
+  el.innerHTML=h;
+}
+var _overlayRenders={fav:renderFavsPanel,quests:renderQuestsPanel,butik:renderShopPanel,admin:renderAdminPanel,changelog:renderChangelogPanel,achievements:function(){renderAchievementsPanel(document.getElementById('achievementsOverlayBody'));},
+leaderboard:function(){renderLeaderboardPanel(document.getElementById('leaderboardOverlayBody'));},
+settings:function(){renderSettingsPanel(document.getElementById('settingsOverlayBody'));},
+forslag:function(){renderForslagPanel(document.getElementById('forslagOverlayBody'));},
+roadmap:renderRoadmapPanel};
 function openPanelOverlay(name){
   closeSidebar();
   var ov=document.getElementById(name+"Overlay");
@@ -1212,6 +1294,15 @@ function getFiltered(){
 function renderGames(){
   var grid=document.getElementById("gamesGrid");
   var filtered=getFiltered();
+  /* A–Z: sort alphabetically when no search/filter active */
+  var _showLetters=!state.search&&(!state.filterCat||state.filterCat==='all');
+  if(_showLetters){
+    filtered=filtered.slice().sort(function(a,b){
+      var na=(a.name||'').replace(/^cl/i,'').trim().toUpperCase();
+      var nb=(b.name||'').replace(/^cl/i,'').trim().toUpperCase();
+      return na<nb?-1:na>nb?1:0;
+    });
+  }
   var slice=filtered.slice(0,(state.page+1)*state.perPage);
   var lmw=document.getElementById("loadMoreWrap");
   grid.innerHTML="";
@@ -1220,8 +1311,22 @@ function renderGames(){
     p.textContent=(state.filterCat==="favoriter"&&!state.user)?"Logga in för att se favoriter":"Inga spel hittades";
     grid.appendChild(p);lmw.style.display="none";return;
   }
+  var _lastLetter='';
   slice.forEach(function(game){
     var realIdx=GAMES.indexOf(game);
+    /* Insert letter divider */
+    if(_showLetters){
+      var _rawN=(game.name||'').replace(/^cl/i,'').trim();
+      var _ch=_rawN.charAt(0).toUpperCase();
+      var _let=/[A-Z]/.test(_ch)?_ch:'#';
+      if(_let!==_lastLetter){
+        _lastLetter=_let;
+        var _ld=document.createElement('div');
+        _ld.style.cssText='grid-column:1/-1;font-size:20px;font-weight:900;color:var(--p1);padding:10px 0 6px;border-bottom:2px solid var(--line);margin-top:6px;letter-spacing:-0.5px';
+        _ld.textContent=_let;
+        grid.appendChild(_ld);
+      }
+    }
     var locked=realIdx>=200&&!!state.user&&gameIsLocked(realIdx);
     var isFav=!!state.user&&state.favorites.indexOf(realIdx)>=0;
     var card=document.createElement("div");
@@ -1250,8 +1355,8 @@ function renderGames(){
 }
 function openSidebar(){document.getElementById("sidebar").classList.add("open");document.getElementById("sideOverlay").classList.add("open");}
 function closeSidebar(){document.getElementById("sidebar").classList.remove("open");document.getElementById("sideOverlay").classList.remove("open");}
-function renderLeaderboardPanel(){
-  var el=document.getElementById('panel_leaderboard');if(!el)return;
+function renderLeaderboardPanel(targetEl){
+  var el=targetEl||document.getElementById('panel_leaderboard');if(!el)return;
   var users=getAllUsers();
   var ranked=users.map(function(u){
     var d=JSON.parse(localStorage.getItem('jspel_'+u)||'{}');
@@ -1280,7 +1385,7 @@ function switchSideTab(tab){
   var panel=document.getElementById("panel_"+tab);
   if(panel){panel.classList.add("active");
     panel.style.animation="none";panel.offsetHeight;panel.style.animation="panelIn .25s ease";
-    function renderForslagPanel(){var el=document.getElementById('panel_forslag');if(!el)return;el.innerHTML='<div class="sideSection"><h4>'+T('sugTitle')+'</h4><div class="sugForm"><input type="text" id="sugGame" placeholder="'+T('sugPlaceholder1')+'" data-i18n-ph="sugPlaceholder1"><textarea id="sugText" placeholder="'+T('sugPlaceholder2')+'" data-i18n-ph="sugPlaceholder2"></textarea><button class="pill primary" onclick="submitSuggestion()" style="justify-content:center;margin-top:2px">'+T('sugBtn')+'</button></div></div>';}var renders={favoriter:renderFavsPanel,teman:renderThemePanel,quests:renderQuestsPanel,forslag:renderForslagPanel,butik:renderShopPanel,instaellningar:renderSettingsPanel,profil:renderProfilePanel,admin:renderAdminPanel,updates:renderUpdatesPanel,inventory:renderInventoryPanel,leaderboard:renderLeaderboardPanel,achievements:function(){renderAchievementsPanel(document.getElementById('panel_achievements'));}};
+    function renderForslagPanel(targetEl){var el=targetEl||document.getElementById('panel_forslag');if(!el)return;el.innerHTML='<div class="sideSection"><h4>'+T('sugTitle')+'</h4><div class="sugForm"><input type="text" id="sugGame" placeholder="'+T('sugPlaceholder1')+'" data-i18n-ph="sugPlaceholder1"><textarea id="sugText" placeholder="'+T('sugPlaceholder2')+'" data-i18n-ph="sugPlaceholder2"></textarea><button class="pill primary" onclick="submitSuggestion()" style="justify-content:center;margin-top:2px">'+T('sugBtn')+'</button></div></div>';}var renders={favoriter:renderFavsPanel,teman:renderThemePanel,quests:renderQuestsPanel,forslag:renderForslagPanel,butik:renderShopPanel,instaellningar:renderSettingsPanel,profil:renderProfilePanel,admin:renderAdminPanel,updates:renderUpdatesPanel,inventory:renderInventoryPanel,leaderboard:renderLeaderboardPanel,achievements:function(){renderAchievementsPanel(document.getElementById('panel_achievements'));}};
     if(renders[tab])renders[tab]();
   }
 }
@@ -1610,8 +1715,8 @@ function buyItem(id,price){
   }
   saveState();updateHUD();toast("Köpt! 🎉");renderShopPanel();updateQuests();
 }
-function renderSettingsPanel(){
-  var el=document.getElementById("panel_instaellningar");
+function renderSettingsPanel(targetEl){
+  var el=targetEl||document.getElementById("panel_instaellningar");
   var s=state.settings;
   el.innerHTML="";
   var sec=document.createElement("div");sec.className="sideSection";
@@ -2545,7 +2650,7 @@ document.addEventListener("DOMContentLoaded",function(){
     state.isAdmin=isUserAdmin(lastUser)||(storedPw&&btoa(storedPw)===ADMINPW);
     finishLogin();
   }else{
-    renderGames();
+    renderGames();renderRecommendedSection();
     switchSideTab("favoriter");
     showSiteAnnouncements();
   }
