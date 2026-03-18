@@ -627,108 +627,82 @@ function toggleBrowserFull(){
   if(btn)btn.textContent=win.classList.contains('bfull')?'⤓':'⛶';
 }
 function openProfileOverlay(){
-  var ov=document.getElementById('profileOverlay');
+  var ov=document.getElementById("profileOverlay");
   if(!ov)return;
-  ov.style.display='flex';
-  setTimeout(function(){ov.classList.add('open');},10);
+  ov.style.display="flex";
+  setTimeout(function(){ov.classList.add("open");},10);
   renderProfileOverlay();
 }
 function renderProfileOverlay(){
-  var el=document.getElementById('profileOverlayBody');
+  var el=document.getElementById("profileOverlayBody");
   if(!el)return;
   if(!state.user){
-    el.innerHTML='<div style="padding:32px;text-align:center">'
-      +'<div style="font-size:48px;margin-bottom:16px">👤</div>'
-      +'<p style="color:var(--d);margin-bottom:16px">'+T('notLoggedFavs')+'</p>'
-      +'<button class="pill primary" onclick="closeProfileOverlay();openLoginModal(false)" style="padding:10px 28px">'+T('loginBtn')+'</button>'
-      +'</div>';
+    el.innerHTML="<div style='padding:32px;text-align:center'><p style='color:var(--d);margin-bottom:16px'>"+T("notLoggedFavs")+"</p><button class='pill primary' onclick='closeProfileOverlay();openLoginModal(false)' style='padding:10px 28px'>"+T("loginBtn")+"</button></div>";
     return;
   }
-  var av=localStorage.getItem('avatar_'+state.user)||'';
+  var av=localStorage.getItem("avatar_"+state.user)||"";
   var favs=state.favorites.length;
   var played=state.gamesPlayed||0;
-  var friends=JSON.parse(localStorage.getItem('friends_'+state.user)||'[]');
-  el.innerHTML='<div class="profile-grid">'
-    // LEFT COLUMN - account info
-    +'<div>'
-      +'<div class="profile-card" style="text-align:center;margin-bottom:12px">'
-        +(av?'<img src="'+av+'" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--p1);margin-bottom:10px">':'<div style="width:80px;height:80px;border-radius:50%;background:var(--glass);border:3px solid var(--p1);display:inline-flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:10px">👤</div>')
-        +'<div style="font-weight:800;font-size:18px;color:var(--w)">'+state.user+'</div>'
-        +'<div style="font-size:12px;color:var(--d)">'+T('stat_level')+' '+state.level+'</div>'
-      +'</div>'
-      +'<div class="profile-card" style="margin-bottom:12px">'
-        +'<h4>'+T('sett_account')+'</h4>'
-        +'<div class="profile-stat-row">'
-          +'<div class="p-stat"><span>'+state.coins+'</span><small>'+T('stat_coins')+'</small></div>'
-          +'<div class="p-stat"><span>'+favs+'</span><small>'+T('stat_favs')+'</small></div>'
-          +'<div class="p-stat"><span>'+played+'</span><small>'+T('stat_played')+'</small></div>'
-        +'</div>'
-        +'<button class="pill ghost" onclick="closeProfileOverlay();doLogout()" style="width:100%;justify-content:center;margin-top:4px">'+T('sett_logout')+'</button>'
-      +'</div>'
-    +'</div>'
-    // RIGHT COLUMN - friends
-    +'<div>'
-      +'<div class="profile-card" style="margin-bottom:12px">'
-        +'<h4>👥 Friends</h4>'
-        +'<div class="user-search-row">'
-          +'<input type="text" id="friendInput" class="formInput" placeholder="Add friend by username..." style="font-size:12px;padding:8px 10px">'
-          +'<button class="pill primary" style="padding:8px 14px;font-size:12px" onclick="addFriend()">Add</button>'
-        +'</div>'
-        +'<div id="friendsList">'
-          +(friends.length?friends.map(function(f){return '<div class="friend-row"><span class="friend-name">'+f+'</span><button class="pill ghost" style="font-size:11px;padding:4px 10px" onclick="removeFriend(''+f+'')">Remove</button></div>';}).join(''):'<p style="color:var(--d);font-size:12px">No friends yet. Add one above!</p>')
-        +'</div>'
-      +'</div>'
-      +'<div class="profile-card">'
-        +'<h4>🔍 Browse Profiles</h4>'
-        +'<div class="user-search-row">'
-          +'<input type="text" id="profileSearchInput" class="formInput" placeholder="Search username..." style="font-size:12px;padding:8px 10px" oninput="searchProfiles(this.value)">'
-        +'</div>'
-        +'<div id="profileSearchResults"><p style="color:var(--d);font-size:12px">Type to search users...</p></div>'
-      +'</div>'
-    +'</div>'
-  +'</div>';
+  var friends=JSON.parse(localStorage.getItem("friends_"+state.user)||"[]");
+  var friendsHTML="";
+  friends.forEach(function(fn){
+    friendsHTML+="<div class='friend-row'><span class='friend-name'>"+fn+"</span><button class='pill ghost rmfriend' data-fn='"+fn+"' style='font-size:11px;padding:4px 10px'>Remove</button></div>";
+  });
+  if(!friends.length)friendsHTML="<p style='color:var(--d);font-size:12px'>No friends yet.</p>";
+  var ava=av?"<img src='"+av+"' style='width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--p1);margin-bottom:10px'>":"<div style='width:80px;height:80px;border-radius:50%;background:var(--glass);border:3px solid var(--p1);display:inline-flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:10px'>&#128100;</div>";
+  el.innerHTML="<div class='profile-grid'><div>"
+    +"<div class='profile-card' style='text-align:center;margin-bottom:12px'>"+ava+"<div style='font-weight:800;font-size:18px;color:var(--w)'>"+state.user+"</div><div style='font-size:12px;color:var(--d)'>"+T("stat_level")+" "+state.level+"</div></div>"
+    +"<div class='profile-card' style='margin-bottom:12px'><h4>"+T("sett_account")+"</h4><div class='profile-stat-row'><div class='p-stat'><span>"+state.coins+"</span><small>"+T("stat_coins")+"</small></div><div class='p-stat'><span>"+favs+"</span><small>"+T("stat_favs")+"</small></div><div class='p-stat'><span>"+played+"</span><small>"+T("stat_played")+"</small></div></div>"
+    +"<button class='pill ghost' onclick='closeProfileOverlay();doLogout()' style='width:100%;justify-content:center;margin-top:4px'>"+T("sett_logout")+"</button></div>"
+    +"</div><div>"
+    +"<div class='profile-card' style='margin-bottom:12px'><h4>Friends</h4><div class='user-search-row'><input type='text' id='friendInput' class='formInput' placeholder='Add friend by username...' style='font-size:12px;padding:8px 10px'><button class='pill primary' onclick='addFriend()' style='padding:8px 14px;font-size:12px'>Add</button></div><div id='friendsList'>"+friendsHTML+"</div></div>"
+    +"<div class='profile-card'><h4>Browse Profiles</h4><div class='user-search-row'><input type='text' id='profileSearchInput' class='formInput' placeholder='Search username...' style='font-size:12px;padding:8px 10px' oninput='searchProfiles(this.value)'></div><div id='profileSearchResults'><p style='color:var(--d);font-size:12px'>Type to search...</p></div></div>"
+    +"</div></div>";
+  el.querySelectorAll(".rmfriend").forEach(function(btn){
+    btn.addEventListener("click",function(){removeFriend(this.dataset.fn);});
+  });
 }
 function closeProfileOverlay(){
-  var ov=document.getElementById('profileOverlay');
-  if(ov){ov.classList.remove('open');setTimeout(function(){ov.style.display='none';},250);}
+  var ov=document.getElementById("profileOverlay");
+  if(ov){ov.classList.remove("open");setTimeout(function(){ov.style.display="none";},250);}
 }
 function addFriend(){
-  var inp=document.getElementById('friendInput');
-  if(!inp)return;
-  var name=inp.value.trim();
-  if(!name||name===state.user){return;}
-  var friends=JSON.parse(localStorage.getItem('friends_'+state.user)||'[]');
-  if(friends.indexOf(name)<0){friends.push(name);localStorage.setItem('friends_'+state.user,JSON.stringify(friends));}
-  inp.value='';renderProfileOverlay();
+  var inp=document.getElementById("friendInput");if(!inp)return;
+  var name=inp.value.trim();if(!name||name===state.user)return;
+  var friends=JSON.parse(localStorage.getItem("friends_"+state.user)||"[]");
+  if(friends.indexOf(name)<0){friends.push(name);localStorage.setItem("friends_"+state.user,JSON.stringify(friends));}
+  inp.value="";renderProfileOverlay();
 }
 function removeFriend(name){
-  var friends=JSON.parse(localStorage.getItem('friends_'+state.user)||'[]');
-  friends=friends.filter(function(f){return f!==name;});
-  localStorage.setItem('friends_'+state.user,JSON.stringify(friends));
+  var friends=JSON.parse(localStorage.getItem("friends_"+state.user)||"[]");
+  localStorage.setItem("friends_"+state.user,JSON.stringify(friends.filter(function(f){return f!==name;})));
   renderProfileOverlay();
 }
 function searchProfiles(q){
-  var el=document.getElementById('profileSearchResults');
-  if(!el)return;
-  if(!q||q.length<2){el.innerHTML='<p style="color:var(--d);font-size:12px">Type to search users...</p>';return;}
-  if(!_sb){el.innerHTML='<p style="color:var(--d);font-size:12px">Not available offline</p>';return;}
-  _sb.from('accounts').select('username,is_admin').ilike('username','%'+q+'%').limit(8).then(function(res){
-    if(!res.data||!res.data.length){el.innerHTML='<p style="color:var(--d);font-size:12px">No users found</p>';return;}
-    el.innerHTML=res.data.map(function(u){
-      var friends=JSON.parse(localStorage.getItem('friends_'+state.user)||'[]');
-      var isFriend=friends.indexOf(u.username)>=0;
-      return '<div class="friend-row">'
-        +'<span class="friend-name">'+(u.is_admin?'🛡 ':'')+u.username+'</span>'
-        +(state.user&&u.username!==state.user?'<button class="pill ghost" style="font-size:11px;padding:4px 10px" onclick="'+(isFriend?'removeFriend':'addFriendDirect')+'(''+u.username+'')">'+(isFriend?'✓ Friend':'+ Add')+'</button>':'')
-        +'</div>';
-    }).join('');
+  var el=document.getElementById("profileSearchResults");if(!el)return;
+  if(!q||q.length<2){el.innerHTML="<p style='color:var(--d);font-size:12px'>Type to search users...</p>";return;}
+  if(!_sb){el.innerHTML="<p style='color:var(--d);font-size:12px'>Not available offline</p>";return;}
+  _sb.from("accounts").select("username,is_admin").ilike("username","%"+q+"%").limit(8).then(function(res){
+    if(!res.data||!res.data.length){el.innerHTML="<p style='color:var(--d);font-size:12px'>No users found</p>";return;}
+    var h2="";var frs=JSON.parse(localStorage.getItem("friends_"+state.user)||"[]");
+    res.data.forEach(function(u){
+      var isFr=frs.indexOf(u.username)>=0;
+      h2+="<div class='friend-row'><span class='friend-name'>"+(u.is_admin?"&#128737; ":"")+u.username+"</span>"
+        +(state.user&&u.username!==state.user?"<button class='pill ghost srchbtn' data-un='"+u.username+"' data-isfriend='"+(isFr?1:0)+"' style='font-size:11px;padding:4px 10px'>"+(isFr?"Friend":"+ Add")+"</button>":"")+"</div>";
+    });
+    el.innerHTML=h2;
+    el.querySelectorAll(".srchbtn").forEach(function(btn){
+      btn.addEventListener("click",function(){
+        if(this.dataset.isfriend==="1"){removeFriend(this.dataset.un);}else{addFriendDirect(this.dataset.un);}
+        var qi=document.getElementById("profileSearchInput");if(qi)searchProfiles(qi.value);
+      });
+    });
   });
 }
 function addFriendDirect(name){
-  var friends=JSON.parse(localStorage.getItem('friends_'+state.user)||'[]');
-  if(friends.indexOf(name)<0){friends.push(name);localStorage.setItem('friends_'+state.user,JSON.stringify(friends));}
-  var q=document.getElementById('profileSearchInput');
-  if(q)searchProfiles(q.value);
+  var friends=JSON.parse(localStorage.getItem("friends_"+state.user)||"[]");
+  if(friends.indexOf(name)<0){friends.push(name);localStorage.setItem("friends_"+state.user,JSON.stringify(friends));}
+  renderProfileOverlay();
 }
 function openDiscord(){
   showLoader('Discord');
