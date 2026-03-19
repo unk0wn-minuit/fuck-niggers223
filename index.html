@@ -637,8 +637,8 @@ html,body{height:100%;font-family:'Segoe UI',system-ui,sans-serif;background:var
     <div class="panelHead"><h3>💡 <span data-i18n="sugTitle">Föreslå ett spel</span></h3><button class="closeBtn" onclick="closePanelOverlay('forslag')">✕</button></div>
     <div class="panelBody">
       <div class="sugForm" style="margin-top:4px">
-        <input type="text" id="sugGame" placeholder="Spelnamn..." style="pointer-events:auto;cursor:text">
-        <textarea id="sugText" placeholder="Beskrivning eller länk..." style="pointer-events:auto;cursor:text;min-height:90px"></textarea>
+        <input type="text" id="sugGame" data-i18n-ph="sugPlaceholder1" placeholder="Spelnamn..." style="pointer-events:auto;cursor:text">
+        <textarea id="sugText" data-i18n-ph="sugPlaceholder2" placeholder="Beskrivning eller länk..." style="pointer-events:auto;cursor:text;min-height:90px"></textarea>
         <button class="pill primary" onclick="submitSuggestion()" style="justify-content:center;margin-top:4px;width:100%"><span data-i18n="sugBtn">Skicka förslag</span></button>
       </div>
     </div>
@@ -943,6 +943,7 @@ function openPanelOverlay(name){
   if(!ov)return;
   ov.classList.add("open");
   document.body.style.overflow="hidden";
+  applyLang();
   if(name==="discord"){
     var fr=document.getElementById("discordFrame");
     if(fr&&!fr.dataset.loaded){fr.src="https://mescord.jakobb.se";fr.dataset.loaded="1";}
